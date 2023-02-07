@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('frontend.shopping_cart.index');
+    return view('frontend.introduce.index');
 });
 
 Auth::routes();
