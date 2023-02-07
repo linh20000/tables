@@ -7,7 +7,9 @@
                 <div class="page-inner">
                     <div class="woocommerce">
                         <div class="woocommerce row row-large row-divided">
-                           
+                             <div class="col large-7 pb-0 ">
+                                Giới thiệu về chúng tôi
+                             </div>
                         </div>
                         <div class="cart-footer-content after-cart-content relative"></div>
                     </div>
