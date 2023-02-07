@@ -18,6 +18,23 @@ class HomeInterfaceController extends Controller
 
     
     // start function show new title
-
+    public function showNewTitle()
+    {
+        return view('frontend.blog.index');
+    }
     // end function show new title
+
+    // start function show product
+    public function ProductList()
+    {
+        return view('frontend.product.index');
+    } 
+    // end function show product
+
+    // start function payment
+    public function Payment()
+    {
+        return view('frontend.payment.index');
+    } 
+    // end function payment
 }

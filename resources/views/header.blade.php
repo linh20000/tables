@@ -22,7 +22,7 @@
 							</li>
 							<li class="html custom html_topbar_left">
 								<span class="fa fa-home"></span>
-								<span style="font-size:13px">Công ty TNHH Bigsan Việt Nam </span>
+								<span style="font-size:13px">Công ty TNHH Ommanisoft Việt Nam </span>
 							</li>          
 						</ul>
 					</div><!-- flex-col left -->
@@ -33,7 +33,7 @@
 					<ul class="nav nav-center nav-small mobile-nav  nav-divided">
 						<li class="html custom html_topbar_left">
 							<span class="fa fa-home"></span>
-							<span style="font-size:13px">Công ty TNHH Bigsan Việt Nam </span>
+							<span style="font-size:13px">Công ty TNHH Ommanisoft Việt Nam </span>
 						</li>          
 					</ul>
 				</div>
@@ -42,7 +42,7 @@
 		<div id="masthead" class="header-main hide-for-sticky nav-dark">
 			<div class="header-inner flex-row container logo-left medium-logo-center" role="navigation">
 				<div id="logo" class="flex-col logo">
-					<a href="index.html" title="Mẫu website bàn học thông minh dẹp chuẩn seo - Thiết kế bởi Topweb" rel="home">
+					<a href="{{route('showHome')}}" title="" >
 						<img width="283" height="70" src="wp-content/uploads/2017/12/chu-ky-so-logo.png" class="header_logo header-logo" alt="Mẫu website bàn học thông minh dẹp chuẩn seo"/>
 						<img  width="283" height="70" src="wp-content/uploads/2017/12/chu-ky-so-logo.png" class="header-logo-dark" alt="Mẫu website bàn học thông minh dẹp chuẩn seo"/>
 					</a>
@@ -66,7 +66,7 @@
 								<li class="header-search-form search-form html relative has-icon">
 									<div class="header-search-form-wrapper">
 										<div class="searchform-wrapper ux-search-box relative form-flat is-normal">
-											<form method="get" class="searchform" action="http://banhocthongminh.namdinhweb.com/" role="search">
+											<form method="get" class="searchform" action="" role="search">
 												<div class="flex-row relative">
 													<div class="flex-col flex-grow">
 														<input type="search" class="search-field mb-0" name="s" value="" placeholder="Bạn cần tìm gì?..." />
@@ -106,7 +106,7 @@
 					<ul class="header-nav header-nav-main nav nav-right  nav-size-large nav-uppercase">
 							<li class="cart-item has-icon has-dropdown">
 							<div class="header-button">
-								<a href="gio-hang/index.html" title="Giỏ hàng" class="header-cart-link icon button circle is-outline is-small">
+								<a href="{{route('CartList')}}" title="Giỏ hàng" class="header-cart-link icon button circle is-outline is-small">
 									<span class="header-cart-title">
 										<span class="cart-price">
 											<span class="woocommerce-Price-amount amount">0
@@ -162,7 +162,7 @@
 						</li>
 						<li class="html header-button-1">
 							<div class="header-button">
-								<a href="tel:0986.989.626" target="_self" class="button primary"  style="border-radius:99px;">
+								<a href="tel:0123456789" target="_self" class="button primary"  style="border-radius:99px;">
 									<span>Hotline : 0986.989.626</span>
 								</a>
 							</div>
@@ -173,8 +173,8 @@
 					<ul class="mobile-nav nav nav-right ">
 						<li class="cart-item has-icon">
 							<div class="header-button">
-								<a href="gio-hang/index.html" class="header-cart-link off-canvas-toggle nav-top-link icon button circle is-outline is-small" data-open="#cart-popup" data-class="off-canvas-cart" title="Giỏ hàng" data-pos="right">
-									<i class="icon-shopping-bag"    data-icon-label="0"></i>
+								<a href="{{route('CartList')}}" class="header-cart-link off-canvas-toggle nav-top-link icon button circle is-outline is-small" data-open="#cart-popup" data-class="off-canvas-cart" title="Giỏ hàng" data-pos="right">
+									<i class="icon-shopping-bag" data-icon-label="0"></i>
 								</a>
 							</div>
 							<div id="cart-popup" class="mfp-hide widget_shopping_cart">
@@ -190,9 +190,10 @@
 									<div class="widget_shopping_cart_content">
 										<ul class="woocommerce-mini-cart cart_list product_list_widget ">
 											<li class="woocommerce-mini-cart-item mini_cart_item">
-												<a href="" class="remove" aria-label="Xóa sản phẩm nà" data-product_id="1394" data-product_sku="">×</a>													
-												<a href="http://banhocthongminh.namdinhweb.com/cua-hang/ban-ghe-chong-can-chong-gu-kd19-k15/">
-													<img width="180" height="180" src="//banhocthongminh.namdinhweb.com/wp-content/uploads/2017/11/b10-180x180.jpg" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" sizes="(max-width: 180px) 100vw, 180px">BÀN GHẾ CHỐNG CẬN CHỐNG GÙ KD19 – K15&nbsp;							
+												<a href="" class="remove" aria-label="Xóa sản phẩm" data-product_id="1394" data-product_sku="">×</a>													
+												<a href="#">
+													<img width="180" height="180" src="//banhocthongminh.namdinhweb.com/wp-content/uploads/2017/11/b10-180x180.jpg" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" sizes="(max-width: 180px) 100vw, 180px">
+													BÀN GHẾ CHỐNG CẬN CHỐNG GÙ KD19 – K15&nbsp;							
 												</a>
 												<span class="quantity">1 × 
 													<span class="woocommerce-Price-amount amount">13.300.000
@@ -208,8 +209,8 @@
 											</span>
 										</p>
 										<p class="woocommerce-mini-cart__buttons buttons">
-											<a href="http://banhocthongminh.namdinhweb.com/gio-hang/" class="button wc-forward">Xem giỏ hàng</a>
-											<a href="http://banhocthongminh.namdinhweb.com/thanh-toan/" class="button checkout wc-forward">Đặt hàng</a>
+											<a href="" class="button wc-forward">Xem giỏ hàng</a>
+											<a href="" class="button checkout wc-forward">Đặt hàng</a>
 										</p>
 									</div>
 									<div class="cart-sidebar-content relative"></div>  
