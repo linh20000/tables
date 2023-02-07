@@ -167,12 +167,18 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
 
 
+
+
+
+
+
+
 // 
 
 Route::get('/', function () {
     return view('frontend.shopping_cart.index');
 });
 
-Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
