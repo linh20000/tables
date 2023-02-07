@@ -114,16 +114,51 @@
 											</span>
 										</span>
 										</span>
-									<i class="icon-shopping-bag"    data-icon-label="0"></i>
+									<i class="icon-shopping-bag" data-icon-label="0"></i>
 								</a>
 							</div>
+
+							{{-- NO CART --}}
 							<ul class="nav-dropdown nav-dropdown-default">
 								<li class="html widget_shopping_cart">
 									<div class="widget_shopping_cart_content">
 										<p class="woocommerce-mini-cart__empty-message">Không có sản phẩm trong giỏ</p>
 									</div>
 								</li>
-							</ul><!-- .nav-dropdown -->
+							</ul>
+
+							{{-- CART title  --}}
+							{{-- <ul class="nav-dropdown nav-dropdown-default">
+								<li class="html widget_shopping_cart">
+									<div class="widget_shopping_cart_content">
+										<ul class="woocommerce-mini-cart cart_list product_list_widget ">
+											<li class="woocommerce-mini-cart-item mini_cart_item">
+												<a href="http://banhocthongminh.namdinhweb.com/gio-hang/?remove_item=f016e59c7ad8b1d72903bb1aa5720d53&amp;_wpnonce=64d4613fb0" class="remove" aria-label="Xóa sản phẩm nà" data-product_id="1394" data-product_sku="">×</a>													
+												<a href="http://banhocthongminh.namdinhweb.com/cua-hang/ban-ghe-chong-can-chong-gu-kd19-k15/">
+													<img width="180" height="180" src="//banhocthongminh.namdinhweb.com/wp-content/uploads/2017/11/b10-180x180.jpg" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" sizes="(max-width: 180px) 100vw, 180px">
+													BÀN GHẾ CHỐNG CẬN CHỐNG GÙ KD19 – K15&nbsp;							
+												</a>
+												<span class="quantity">1 × 
+													<span class="woocommerce-Price-amount amount">13.300.000
+														<span class="woocommerce-Price-currencySymbol">₫</span>
+													</span>
+												</span>					
+											</li>
+										</ul>
+										<p class="woocommerce-mini-cart__total total">
+											<strong>Tạm tính:</strong> 
+											<span class="woocommerce-Price-amount amount">
+												13.300.000
+												<span class="woocommerce-Price-currencySymbol">₫</span>
+											</span>
+										</p>
+										<p class="woocommerce-mini-cart__buttons buttons">
+											<a href="" class="button wc-forward">Xem giỏ hàng</a>
+											<a href="http://banhocthongminh.namdinhweb.com/thanh-toan/" class="button checkout wc-forward">Đặt hàng</a>
+										</p>
+									</div>
+								</li>
+							</ul> --}}
 						</li>
 						<li class="html header-button-1">
 							<div class="header-button">
@@ -148,8 +183,34 @@
 										<h4 class="uppercase">Giỏ hàng</h4>
 										<div class="is-divider"></div>
 									</div>
-									<div class="widget_shopping_cart_content">
+									{{-- <div class="widget_shopping_cart_content">
 										<p class="woocommerce-mini-cart__empty-message">Không có sản phẩm trong giỏ</p>
+									</div> --}}
+
+									<div class="widget_shopping_cart_content">
+										<ul class="woocommerce-mini-cart cart_list product_list_widget ">
+											<li class="woocommerce-mini-cart-item mini_cart_item">
+												<a href="" class="remove" aria-label="Xóa sản phẩm nà" data-product_id="1394" data-product_sku="">×</a>													
+												<a href="http://banhocthongminh.namdinhweb.com/cua-hang/ban-ghe-chong-can-chong-gu-kd19-k15/">
+													<img width="180" height="180" src="//banhocthongminh.namdinhweb.com/wp-content/uploads/2017/11/b10-180x180.jpg" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" sizes="(max-width: 180px) 100vw, 180px">BÀN GHẾ CHỐNG CẬN CHỐNG GÙ KD19 – K15&nbsp;							
+												</a>
+												<span class="quantity">1 × 
+													<span class="woocommerce-Price-amount amount">13.300.000
+														<span class="woocommerce-Price-currencySymbol">₫</span>
+													</span>
+												</span>					
+											</li>
+										</ul>
+										<p class="woocommerce-mini-cart__total total">
+											<strong>Tạm tính:</strong> 
+											<span class="woocommerce-Price-amount amount">13.300.000
+												<span class="woocommerce-Price-currencySymbol">₫</span>
+											</span>
+										</p>
+										<p class="woocommerce-mini-cart__buttons buttons">
+											<a href="http://banhocthongminh.namdinhweb.com/gio-hang/" class="button wc-forward">Xem giỏ hàng</a>
+											<a href="http://banhocthongminh.namdinhweb.com/thanh-toan/" class="button checkout wc-forward">Đặt hàng</a>
+										</p>
 									</div>
 									<div class="cart-sidebar-content relative"></div>  
 								</div>
