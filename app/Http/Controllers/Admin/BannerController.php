@@ -1,66 +1,53 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Banner;
-
-
 class BannerController extends Controller
 {
-    public function viewBannerList(){
+
+    // Danh sách Banner
+    public function showBanner() {
         $banner = Banner::all();
-        return view('backend.banner.list',
-        ['title'=>'Danh sách Banner']
-        , compact('banner'));
+        $dataLenght = count($banner);
+        return view('backend.banner.list',compact('banner','dataLenght'),['breadcrumb'=>'Danh sách banner']);
+    }   
+    
+    // Thêm danh mục
+    public function createBanner() {
+        // $category_parent = Category::where('parent_id' , '=', 0)->get();
+        // dd($category_parent);
+        return view('backend.banner.create',['breadcrumb'=>'Thêm banner']);
+    } 
+    public function postBanner(Request $request) {
+        $data_banner = $request->all();
+        // dd($data_banner);
+
+        Banner::create($data_banner);
+        return back()->with('success','Thêm banner thành công');
+    }
+
+    // Chỉnh sửa danh mục
+    public function getUpdateBanner($id) {
+        $banner = Banner::find($id);
+        return view('backend.banner.update',['breadcrumb'=>'Chỉnh sửa banner'], compact('banner'));
+    } 
+
+    public function updateBanner(Request $request, $id) {
+        $data_update = $request->all();
+        $banner_update = Banner::find($id);
+        $banner_update->update($data_update);
+        return redirect(route('admin.banner'))->with('success', 'Chỉnh sửa thành công');
+    }
+
+    public function deleteBanner($id) {
+        $banner_delete = Banner::find($id);
+
+        $banner_delete->delete();
+
+        return back()->with('success', 'Xóa banner thành công');
         
     }
-    public function createBanner(){
-        return view('backend.banner.create', 
-        ['title'=>'Thêm Banner']
-        );
-    }
-    public function storeBanner(Request $request){
-        $sort = $request->sort;
-        $banner = Banner::where('sort','=',$sort)->get();
-        if(!$banner->isEmpty()){
-            return back()->with('error', 'Số thứ tự đã tồn tại !!!');
-        };
-        $requi = [
-            'name'  => 'required|max:255',
-            'sort'  => 'required',
-            'image'   => 'required'
-        ];
-        $messages = [
-            'name.required'    => 'Nhập tên !!!',
-            'sort.required' => 'Nhập số thứ tự (là số nguyên dương) !!!',
-            'image.required'  => 'Nhập ảnh !!!'
-        ];
-        $validate = $request->validate($requi, $messages);
-        $data = $request->all();
-        Banner::create($data);
-        return redirect(route('admin.viewBannerList'));
-    }
-
-    public function getUpdateBanner($id){
-        $banner_detail = Banner::findOrFail($id);
-        return view('backend.banner.update', 
-        ['title'=>'Chỉnh sửa Banner'], compact('banner_detail'));
-    }
-
-    public function updateBanner(Request $request, $id){
-        $sort = $request->sort;
-        $banner = Banner::where('sort','=',$sort)->get();
-        $banner = Banner::findOrFail($id);
-        $data = $request->all();
-        $banner->update($data);
-        return redirect(route('admin.viewBannerList'));
-    }
-
-    public function deletebanner($id){
-        $banner = Banner::findOrFail($id);
-        $banner->delete();
-        return redirect(route('admin.viewBannerList'));
-    }
-
 }
