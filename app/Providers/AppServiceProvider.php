@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Category;
 use App\Models\Product;
@@ -33,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
                 'categories'=>  Category::where('parent_id', '=', 0)->get(),
                 'banner'=>Banner::all(),
                 'product_cart'=>Cart::content(),
+                'user'=>User::first(),
                 'product_blog'=>Product::orderBy('created_at', "ASC")->where('status','=', '1')->get(),
             ]);
         });

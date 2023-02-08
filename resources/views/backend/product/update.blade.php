@@ -10,7 +10,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right justify-content-end">
-                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('admin.home')}}">Trang chủ</a></li>
                     <li class="breadcrumb-item active">{{$breadcrumb}}</li>
                 </ol>
             </div>
