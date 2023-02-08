@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\PolicyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,12 +17,11 @@ use Illuminate\Support\Facades\Route;
 // Đăng nhập trang quản lí
 Route::get('admin/login', [App\Http\Controllers\Admin\LoginController::class, 'showLogin'])->name('admin.showlogin');
 Route::get('admin', [App\Http\Controllers\Admin\LoginController::class, 'showLogin'])->name('admin.showlogin');
-
 // đăng nhập 
 Route::post('admin/login', [App\Http\Controllers\Admin\LoginController::class, 'login'])->name('admin.login');
-
 // Đăng xuất trang quản lí
 Route::get('/admin/logout',[App\Http\Controllers\Admin\LoginController::class,'logout'])->name('admin.logout');
+
 
 // 
 Route::prefix('admin')->middleware('auth')->group(function () {
@@ -77,6 +78,33 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
         // delete product
         Route::get('list/delete/{id}', [App\Http\Controllers\Admin\ProductController::class,'deleteProduct'])->name('admin.deleteProduct');
+    });
+
+    //blog
+    Route::prefix('blog')->group(function() {
+        Route::get('list',[BlogController::class,'BlogList'])->name('blog.list');
+        Route::get('create',[BlogController::class,'createBlog'])->name('blog.create');
+        Route::post('create',[BlogController::class,'storeBlog']);
+        Route::get('update/{id}',[BlogController::class,'getUpdateBlog'])->name('blog.getUpdate');
+        Route::post('update/{id}',[BlogController::class,'updateBlog'])->name('blog.update');
+        Route::get('deleteblog/{id}', [BlogController::class, 'deleteBlog'])->name('blog.delete');
+    });
+
+    //introduce
+    Route::prefix('introduce')->group(function() {
+        // get update
+        Route::get('update',[App\Http\Controllers\Admin\IntroduceController::class,'getUpdateIntroduce'])->name('get.intro');
+        // post update
+        Route::post('update-{id}',[App\Http\Controllers\Admin\IntroduceController::class,'updateIntroduce'])->name('updateIntroduce');
+    });
+
+    Route::prefix('policy')->group(function(){
+        Route::get('list',[PolicyController::class,'viewPolicy'])->name('policy.list');
+        Route::get('create',[PolicyController::class,'createPolicy'])->name('policy.create');
+        Route::post('create',[PolicyController::class,'storePolicy']);
+        Route::get('update/{id}',[PolicyController::class,'getUpdatePolicy'])->name('policy.getUpdate');
+        Route::post('update/{id}',[PolicyController::class,'updatePolicy'])->name('policy.update');
+        Route::get('deletePolicy/{id}', [PolicyController::class, 'deletePolicy'])->name('policy.delete');
     });
 
 
