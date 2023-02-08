@@ -8,12 +8,12 @@
         
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Quản lý danh mục</h1>
+                <h1>Quản lý đánh giá</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right justify-content-end">
                     <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-                    <li class="breadcrumb-item active">{{$breadcrumb}}</li>
+                    <li class="breadcrumb-item active">{{$title}}</li>
                 </ol>
             </div>
         </div>
@@ -23,8 +23,8 @@
                 <div class="card">
                     <div class="card-body d-flex align-items-center justify-content-between">
                         <div>
-                            <h3 class="fw-bolder mb-75">{{$dataLenght}}</h3>
-                            <span>Tổng số danh mục</span>
+                            <h3 class="fw-bolder mb-75"></h3>
+                            <span>Tổng số đánh giá</span>
                         </div>
                         <div class="avatar bg-light-primary p-50">
                             <span class="avatar-content">
@@ -52,20 +52,20 @@
             <table>
                 <tbody>
                 <tr>
-                    <form method="get" action="{{route('admin.category.search')}}">
-                        <td>
-                            <input class="form-control" name="name" placeholder="Nhập tên danh mục" value="">
-                        </td>
-                        <td>
-                            <button type="submit" class="btn btn-secondary">Tìm kiếm</button>
-                        </td>
-                    </form>
+                    <form method="get" action="" enctype="multipart/form-data"></form>
+                    <td>
+                        <input class="form-control" name="category_name" placeholder="Nhập tên sản phẩm" value="">
+
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-secondary">Tìm kiếm</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
         </div>
         <div class="dt-buttons btn-group">
-            <a href="{{route('admin.createCategory')}}" class="btn btn-secondary action-item" tabindex="0" aria-controls="table-categories">
+            <a href="{{route('showcreateFeedback')}}" class="btn btn-secondary action-item" tabindex="0" aria-controls="table-categories">
                 <span>
                     <span data-action="create">
                     <i class="fa fa-plus"></i>
@@ -90,13 +90,7 @@
                             Tên
                         </th>
                         <th style="width: 10%">
-                            Tiêu đề
-                        </th>
-                        <th style="width: 10%">
-                            Miêu tả
-                        </th>
-                        <th style="width: 10%">
-                            Từ khóa
+                            Bình luận
                         </th>
                         <th style="width: 15%" class="text-right">
                             Tác vụ
@@ -104,14 +98,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($categories as $item)
+                    @foreach($feedback as $item)
                     <tr id="row" class="text-center">
                         <td>
                             {{$item->id}}
                         </td>
                         <td >
                             <div style="max-width:110px; min-width:150px; max-height:80px; overflow:hidden; display:flex;">
-                                <img style="width:100%;" src="{{$item->thumbnail ? $item->thumbnail : asset('empty/empty_img.png')}}" alt="">
+                                <img style="width:100%;  object-fit:cover;"  src="{{$item->avatar ? $item->avatar : asset('upload_thumbnail/empty_img.png')}}" alt="">
                             </div>
                         </td>
                         <td style="max-width:110px;"> 
@@ -119,21 +113,13 @@
                                 {{$item->name}}
                             </a>
                         </td>
-                        <td class="project_progress" style="">
-                            {{$item->title}}
-                        </td>
                         <td style="max-width:110px;"> 
                             <a style="display:-webkit-box;word-wrap: break-word;white-space: normal;overflow: hidden;display: -webkit-box;text-overflow: ellipsis;-webkit-box-orient: vertical;-webkit-line-clamp: 2; ">
-                                {{$item->description}}
-                            </a>
-                        </td>
-                        <td class=""  style="max-width:150px;">
-                            <a style="display:-webkit-box;word-wrap: break-word;white-space: normal;overflow: hidden;display: -webkit-box;text-overflow: ellipsis;-webkit-box-orient: vertical;-webkit-line-clamp: 2; ">
-                                {!! $item->seo_keyword !!}
+                                {{$item->comment}}
                             </a>
                         </td>
                         <td class="project-actions text-right">
-                            <a href="{{route('admin.getUpdateCategory',[$item->id])}}" class="btn btn-sm btn-icon">
+                            <a href="{{route('showUpdateFeedback', [$item->id])}}" class="btn btn-sm btn-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit font-medium-2 text-body">
                                     <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
                                     <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
@@ -160,7 +146,7 @@
                                 </div>
                                 <div class="modal-footer justify-content-center">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Quay lại</button>
-                                    <a href="{{route('admin.deleteCategory',[$item->id])}}"  type="button" class="btn btn-danger">Xóa</a>
+                                    <a href="{{route('deleteFeedback',[$item->id])}}"  type="button" class="btn btn-danger">Xóa</a>
                                 </div>
                             </div>
                         </div>

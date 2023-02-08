@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\Category;
+use App\Models\Banner;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,5 +26,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        view()->composer('*', function($view) {
+            $view->with([
+                'categories'=>  Category::where('parent_id', '=', 0)->get(),
+                'banner'=>Banner::all(),
+            ]);
+        });
     }
 }

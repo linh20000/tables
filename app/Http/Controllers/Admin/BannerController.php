@@ -24,7 +24,23 @@ class BannerController extends Controller
     public function postBanner(Request $request) {
         $data_banner = $request->all();
         // dd($data_banner);
-
+        $requi = [
+            'name'        => 'required|max:255',
+            'title'        => 'required|max:255',
+            'thumbnail' => 'required',
+            'seo_title'     => 'required|max:255',
+            'seo_keyword' => 'required|max:255',
+            'seo_description'        => 'required|max:255',
+        ];
+        $messages = [
+            'name.required'    => 'Chưa nhập tên',
+            'title.required'=>'Chưa nhập tiêu đề',
+            'thumbnail.required'    => 'Chưa nhập ảnh',
+            'seo_title.required' => 'Chưa nhập tiêu đề tìm kiếm',
+            'seo_keyword.required' => 'Chưa nhập từ khóa tìm kiếm',
+            'seo_description.required'=>'Chưa nhập miêu tả tìm kiếm',
+        ];
+        $request->validate($requi, $messages);
         Banner::create($data_banner);
         return back()->with('success','Thêm banner thành công');
     }
@@ -38,6 +54,23 @@ class BannerController extends Controller
     public function updateBanner(Request $request, $id) {
         $data_update = $request->all();
         $banner_update = Banner::find($id);
+        $requi = [
+            'name'        => 'required|max:255',
+            'title'        => 'required|max:255',
+            'thumbnail' => 'required',
+            'seo_title'     => 'required|max:255',
+            'seo_keyword' => 'required|max:255',
+            'seo_description'        => 'required|max:255',
+        ];
+        $messages = [
+            'name.required'    => 'Chưa nhập tên',
+            'title.required'=>'Chưa nhập tiêu đề',
+            'thumbnail.required'    => 'Chưa nhập ảnh',
+            'seo_title.required' => 'Chưa nhập tiêu đề tìm kiếm',
+            'seo_keyword.required' => 'Chưa nhập từ khóa tìm kiếm',
+            'seo_description.required'=>'Chưa nhập miêu tả tìm kiếm',
+        ];
+        $request->validate($requi, $messages);
         $banner_update->update($data_update);
         return redirect(route('admin.banner'))->with('success', 'Chỉnh sửa thành công');
     }

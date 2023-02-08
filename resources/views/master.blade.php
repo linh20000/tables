@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<link rel="pingback" href="xmlrpc.php" />
 	<title>Bàn học thông minh dẹp chuẩn seo &#8211;</title>
+	<meta name='csrf-token' content="{{csrf_token()}}">				
 	<link rel='stylesheet' id='menu-icons-extra-css'  href={{asset('wp-content/plugins/menu-icons/css/extra.mincf86.css?ver=0.10.2')}} type='text/css' media='all' />
 	<link rel='stylesheet' id='contact-form-7-css'  href={{asset('wp-content/plugins/contact-form-7/includes/css/styles33a6.css?ver=4.9')}} type='text/css' media='all' />
 	<link rel='stylesheet' id='muahangnhanh-css'  href={{asset('wp-content/plugins/muahangnhanh/style/styleee45.css?ver=4.8.4')}} type='text/css' media='all' />

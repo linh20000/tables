@@ -49,20 +49,6 @@
 <div class="card">
     <div class="card-header">
         <div class="btn-group">
-            <table>
-                <tbody>
-                <tr>
-                    <form method="get" action="">
-                    <td>
-                        <input class="form-control" name="name" placeholder="Nhập tên danh mục" value="">
-                    </td>
-                    <td>
-                        <button type="submit" class="btn btn-secondary">Tìm kiếm</button>
-                    </td>
-                    </form>
-                </tr>
-            </tbody>
-        </table>
         </div>
         <div class="dt-buttons btn-group">
             <a href="{{route('admin.createCategory')}}" class="btn btn-secondary action-item" tabindex="0" aria-controls="table-categories">
