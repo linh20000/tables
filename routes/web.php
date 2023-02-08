@@ -69,17 +69,12 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 // Giao diện người dùng
 
 // 
-<<<<<<< HEAD
 
 Route::get('/', function () {
     return view('frontend.home.index');
 });
 
-<<<<<<< HEAD
 // trang chủ 
-=======
-// Trang chủ 
->>>>>>> linh
 Route::get('/', [App\Http\Controllers\frontend\HomeInterfaceController::class, 'showHome'])->name('showHome');
 
 // Danh sách sản phẩm
@@ -87,10 +82,6 @@ Route::get('/danh-sach-san-pham', [App\Http\Controllers\frontend\HomeInterfaceCo
 
 // Giỏ hàng
 Route::get('/gio-hang', [App\Http\Controllers\frontend\ProductCartController::class, 'CartList'])->name('CartList');
-<<<<<<< HEAD
-=======
->>>>>>> 38f542e02a004cd0bd33895b6ba4008ab894cb1e
-=======
 
 // Tin tức
 Route::get('/tin-tuc', [App\Http\Controllers\frontend\HomeInterfaceController::class, 'showNewTitle'])->name('showNewTitle');
@@ -98,6 +89,5 @@ Route::get('/tin-tuc', [App\Http\Controllers\frontend\HomeInterfaceController::c
 // Thanh toán
 
 Route::get('/thanh-toan', [App\Http\Controllers\frontend\HomeInterfaceController::class, 'Payment'])->name('Payment');
->>>>>>> linh
 
 
