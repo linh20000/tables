@@ -5,13 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Appointment extends Model 
+class Category extends Model
 {
     use HasFactory;
     protected $fillable = [
         'name',
-        'phoneNumber',
-        'time',
-        'symptom',
+        'parent_id',
+        'description',
+        'thumbnail',
+        'title',
+        'seo_keyword',
+        'seo_description',
+        'seo_title',
     ];
+
 }
