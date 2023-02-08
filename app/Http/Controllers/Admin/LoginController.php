@@ -10,7 +10,7 @@ class LoginController extends Controller
     //show login
     public function showLogin() {
         if (Auth::check()) {
-            return redirect(route('admin.showHome'));
+            return redirect(route('admin.home'));
         } 
         return view('backend.auth.login');
     }
@@ -29,12 +29,11 @@ class LoginController extends Controller
         
         if (Auth::attempt($credential)) {
             $request->session()->regenerate();
-            return redirect(route('admin.showHome'));
+            return redirect(route('admin.home'));
         } 
         
         return back()->with('message','Sai tên đăng nhập hoặc mật khẩu');
     }
-
     //logout
     public function logout() {
         Auth()->logout();

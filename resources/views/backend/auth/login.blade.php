@@ -54,7 +54,7 @@
                 <div class="auth-wrapper auth-cover">
                     <div class="auth-inner row m-0">
                         <a class="brand-logo" href="">
-                            <h2 class="brand-text text-primary ms-1">Kính mắt Solar-admin</h2>
+                            <h2 class="brand-text text-primary ms-1">back end sịn</h2>
                         </a>
 
                         <!-- Left Text-->

@@ -1,123 +1,70 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
-use App\Models\ServiceCategory;
-use App\Http\Controllers\Hook\CategoryHook;
 class CategoryController extends Controller
 {
-    public function search(Request $request){
-        // dd($request->all());
-        $data = Category::where('name', 'LIKE', '%'. $request->name .'%')->orWhere('seo_title', 'LIKE', '%'. $request->name .'%')->get();
-        $dataLenght = count($data);
-        return view('backend.categories.list', [
-            'breadcrumb'=>'Quản lý danh mục'
-        ],compact('data','dataLenght'));
-    }
-    public function showCategoriesList(CategoryHook $CategoryHook) {
-        $data = $CategoryHook->getAll();
-        // dd($data);
-        $dataLenght = count($data);
-        return view('backend.categories.list', [
-            'breadcrumb'=>'Quản lý danh mục'
-        ],compact('data','dataLenght'));
-    }
-    public function interfaceAddCategoriesList(CategoryHook $CategoryHook) {
-        $parent_categories = $CategoryHook->getParentStatus();
-        // dd($parent_categories);
-        return view('backend.categories.create', [
-            'breadcrumb'=>'Thêm danh mục'
-        ], compact('parent_categories'));
-    }
-    public function addCategoriesList(Request $request,CategoryHook $CategoryHook) {
+
+    // Danh sách danh mục
+    public function showCategory() {
+        $categories = Category::all();
+        $dataLenght = count($categories);
+        return view('backend.category.list',compact('categories','dataLenght'),['breadcrumb'=>'Danh sách danh mục']);
+    }   
+    
+    // Thêm danh mục
+    public function createCategory() {
+        // $category_parent = Category::where('parent_id' , '=', 0)->get();
+        // dd($category_parent);
+        return view('backend.category.create',['breadcrumb'=>'Thêm danh mục']);
+    } 
+    public function postCategory(Request $request) {
+        $dataCategory = $request->all();
         $requi = [
             'name'        => 'required|max:255',
-            'slug'        => 'required|max:255',
+            'title'        => 'required|max:255',
+            'description'        => 'required|max:255',
             'parent_id' => 'nullable',
             'thumbnail' => 'required',
             'seo_title'     => 'required|max:255',
             'seo_keyword' => 'required|max:255',
+            'seo_description'        => 'required|max:255',
         ];
         $messages = [
             'name.required'    => 'Chưa nhập tên',
-            'slug.required'=>'Chưa có đường dẫn mục',
+            'title.required'=>'Chưa nhập tiêu đề',
+            'description.required'=>'Chưa nhập miêu tả',
             'thumbnail.required'    => 'Chưa nhập ảnh',
-            'seo_title.required' => 'Chưa nhập tiêu đề',
-            'seo_keyword.required' => 'Chưa nhập từ khóa'
+            'seo_title.required' => 'Chưa nhập tiêu đề tìm kiếm',
+            'seo_keyword.required' => 'Chưa nhập từ khóa tìm kiếm',
+            'seo_description.required'=>'Chưa nhập miêu tả tìm kiếm',
         ];
-        $validate = $request->validate($requi, $messages);
-        $CategoryHook->createCategory($validate);
-        return back()->with('success', 'Tạo thành công danh mục !');
-    }
-    public function deleteCategoriesList($id,CategoryHook $CategoryHook) {
-        $data = $CategoryHook->getId($id);
-        $CategoryHook->delete($data);
-        return redirect(route('admin.showCategoriesList'))->with('mess', 'xóa thành công danh mục');
-    }
-    public function getEdit(Request $request, $id,CategoryHook $CategoryHook) {
-        $category = $CategoryHook->getId($id);
-        $parent_categories = $CategoryHook->getParentStatus();
-        // dd($parent_categories);
-        return view('backend.categories.update',[
-            'breadcrumb'=> 'Chỉnh sửa danh mục'
-        ], compact('category', 'parent_categories'));
-    }
-    public function postEdit(Request $request,$id,CategoryHook $CategoryHook) {
-        $data = $CategoryHook->getId($id);
-        $CategoryHook->updateCategory($request,$data);
-        return redirect(route('admin.showCategoriesList'))->with('mess', 'Cập nhật thành công danh mục');
+        $request->validate($requi, $messages);
+        Category::create($dataCategory);
+        return back()->with('success','Thêm danh mục thành công');
     }
 
+    // Chỉnh sửa danh mục
+    public function getUpdateCategory($id) {
+        $category = Category::find($id);
+        return view('backend.category.update',['breadcrumb'=>'Chỉnh sửa danh mục'], compact('category'));
+    } 
 
-    // service category
-
-    public function showServiceCategory() {
-        $data = ServiceCategory::all();
-        $dataLenght = count($data);
-        return view('backend.service.list',[
-            'breadcrumb'=> 'Danh sách dịch vụ'
-        ],compact('data','dataLenght'));
-    }
-    public function getAddServiceCategory() {
-        $parent_categories = ServiceCategory::where('category_id', '=', 0)->get();
-        return view('backend.service.create',[
-            'breadcrumb'=> 'Thêm dịch vụ'
-        ], compact('parent_categories'));
-    }
-     public function addServiceCategory(Request $request) {
-        $data = $request->all();
-        $validate = $request->validate([
-            'name'=>'required',
-            'thumbnail'=>'required'
-
-        ],[
-            'name.required'=>'Vui lòng nhập tên!!!',
-            'thumbnail.required'=>'Vui lòng nhập ảnh!!!',
-        ]);
-        ServiceCategory::create($data);
-        return back()->with('success', 'Tạo thành công danh mục dịch vụ !');
+    public function updatecategory(Request $request, $id) {
+        $data_update = $request->all();
+        $category_update = Category::find($id);
+        $category_update->update($data_update);
+        return redirect(route('admin.category'))->with('success', 'Chỉnh sửa thành công');
     }
 
-    public function getEditService(Request $request,$id) {
-        $data = ServiceCategory::FindOrFail($id);
-        $parent_categories = ServiceCategory::where('category_id', '=', 0)->get();
+    // xóa danh mục
+    public function deleteCategory($id) {
+        $category_delete = Category::find($id);
 
-        return view('backend.service.update',[
-            'breadcrumb'=> 'Chỉnh sửa danh mục'
-        ], compact('data','parent_categories'));
+        $category_delete->delete();
+        return back()->with('success', 'Xóa danh mục thành công');
     }
-     public function postEditService(Request $request,$id) {
-        $csc = ServiceCategory::FindOrFail($id);
-        $data = $request->all();
-        $csc->update($data);
-        return redirect(route('admin.ShowServiceCategory'))->with('mess', 'Cập nhật thành công danh mục');
-    }
-     public function deleteServiceCategory($id) {
-        $serviceCategory = ServiceCategory::findOrFail($id);
-        $serviceCategory->delete();
-        return redirect(route('admin.ShowServiceCategory'))->with('mess', 'xóa thành công danh mục');
-    }
-    
 }
