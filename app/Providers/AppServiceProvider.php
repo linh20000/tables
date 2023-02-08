@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\User;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,10 +20,15 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      *
-     * @return void
+     * @return void*
      */
     public function boot()
     {
         //
+        view()->composer('*',function($view) {
+            $view->with([
+                'user'=>User::first(),
+            ]);
+        });
     }
 }
