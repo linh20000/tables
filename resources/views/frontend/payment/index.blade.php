@@ -68,21 +68,23 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr class="cart_item">
-                                                            <td class="product-name">
-                                                                BÀN GHẾ CHỐNG CẬN CHỐNG GÙ KD19 – K15&nbsp;							 
-                                                                <strong class="product-quantity">× 1</strong>													
-                                                            </td>
-                                                            <td class="product-total">
-                                                                <span class="woocommerce-Price-amount amount">13.300.000<span class="woocommerce-Price-currencySymbol">₫</span></span>						
-                                                            </td>
-                                                        </tr>
+                                                        @foreach ($product_cart as $item)
+                                                            <tr class="cart_item">
+                                                                <td class="product-name">
+                                                                    {{$item->name}}						 
+                                                                    <strong class="product-quantity">× {{$item->qty}}</strong>													
+                                                                </td>
+                                                                <td class="product-total">
+                                                                    <span class="woocommerce-Price-amount amount">{{number_format($item->price * $item->qty)}}<span class="woocommerce-Price-currencySymbol">₫</span></span>						
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
                                                     </tbody>
                                                     <tfoot>
                                                         <tr class="cart-subtotal">
                                                             <th>Tạm tính</th>
                                                             <td>
-                                                                <span class="woocommerce-Price-amount amount">13.300.000
+                                                                <span class="woocommerce-Price-amount amount">{{Cart::subtotal()}}
                                                                     <span class="woocommerce-Price-currencySymbol">₫
                                                                     </span>
                                                                 </span>
@@ -92,7 +94,7 @@
                                                             <th>Tổng tiền</th>
                                                             <td>
                                                                 <strong>
-                                                                    <span class="woocommerce-Price-amount amount">13.300.000
+                                                                    <span class="woocommerce-Price-amount amount">{{Cart::subtotal()}}
                                                                         <span class="woocommerce-Price-currencySymbol">₫</span>
                                                                     </span>
                                                                 </strong> 

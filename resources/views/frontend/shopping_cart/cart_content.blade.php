@@ -1,5 +1,5 @@
 <div class="col large-7 pb-0 ">
-    <form action="http://banhocthongminh.namdinhweb.com/gio-hang/" method="post" class="woocommerce-cart-form">
+    <form action="" method="post" class="woocommerce-cart-form">
         <div class="cart-wrapper sm-touch-scroll">
             <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents" cellspacing="0">
                 <thead>
@@ -11,32 +11,34 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="woocommerce-cart-form__cart-item cart_item">
-                        <td class="product-remove">
-                            <a href="" class="remove" aria-label="Xóa sản phẩm nà" data-product_id="1394" data-product_sku="">×</a>          
-                        </td>
-                        <td class="product-thumbnail">
-                            <a href="">
-                                <img width="180" height="180" src="//banhocthongminh.namdinhweb.com/wp-content/uploads/2017/11/b10-180x180.jpg" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt=""  sizes="(max-width: 180px) 100vw, 180px">
-                            </a>          
-                        </td>
-                        <td class="product-name" data-title="Sản phẩm">
-                            <a href="">BÀN GHẾ CHỐNG CẬN CHỐNG GÙ KD19 – K15</a>          
-                        </td>
-                        <td class="product-price" data-title="Giá">
-                            <span style="color: red;">Liên hệ</span>          
-                        </td>
-                        <td class="product-quantity" data-title="Số lượng">
-                            <div class="quantity buttons_added">
-                                <input disabled type="number" class="input-text qty text" step="1" min="0" max="9999" name="cart[f016e59c7ad8b1d72903bb1aa5720d53][qty]" value="1" title="SL" size="4" pattern="[0-9]*" inputmode="numeric">
-                            </div>
-                        </td>
-                        <td class="product-subtotal" data-title="Tổng tiền">
-                            <span class="woocommerce-Price-amount amount">13.300.000
-                                <span class="woocommerce-Price-currencySymbol">₫</span>
-                            </span>            
-                        </td>
-                    </tr>
+                    @foreach ($product_cart as $item)
+                        <tr class="woocommerce-cart-form__cart-item cart_item">
+                            <td class="product-remove">
+                                <a href="{{route('deleteCart', $item->rowId)}}" class="remove" aria-label="Xóa sản phẩm " data-product_id="1394" data-product_sku="">×</a>          
+                            </td>
+                            <td class="product-thumbnail">
+                                <a href="{{route('showDetails', [$item->id, Str::slug($item->name)])}}">
+                                    <img width="180" height="180" src="{{$item->options->thumbnail}}" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt=""  sizes="(max-width: 180px) 100vw, 180px">
+                                </a>          
+                            </td>
+                            <td class="product-name" data-title="Sản phẩm">
+                                <a href="{{route('showDetails', [$item->id, Str::slug($item->name)])}}">{{$item->name}}</a>          
+                            </td>
+                            <td class="product-price" data-title="Giá">
+                                <span style="color: red;">Liên hệ</span>          
+                            </td>
+                            <td class="product-quantity" data-title="Số lượng">
+                                <div class="quantity buttons_added">
+                                    {{$item->qty}}
+                                </div>
+                            </td>
+                            <td class="product-subtotal" data-title="Tổng tiền">
+                                <span class="woocommerce-Price-amount amount">{{number_format($item->price * $item->qty)}}
+                                    <span class="woocommerce-Price-currencySymbol">₫</span>
+                                </span>            
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

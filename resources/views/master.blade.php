@@ -14,8 +14,10 @@
 	<link rel='stylesheet' id='flatsome-main-css'  href={{asset('wp-content/themes/flatsome/assets/css/flatsomeb186.css?ver=3.3.8')}} type='text/css' media='all' />
 	<link rel='stylesheet' id='flatsome-shop-css'  href={{asset('wp-content/themes/flatsome/assets/css/flatsome-shopb186.css?ver=3.3.8')}} type='text/css' media='all' />
 	<link rel='stylesheet' id='flatsome-style-css'  href={{asset('wp-content/themes/duoc-pham/styleb186.css?ver=3.3.8')}} type='text/css' media='all' />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<script type='text/javascript' src={{asset('wp-includes/js/jquery/jqueryb8ff.js?ver=1.12.4')}}></script>
 	<script type='text/javascript' src={{asset('wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1')}}></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="public/asset/table.js"> 
 	<link rel="canonical" href="index.html" />
 	<link rel='shortlink' href='index.html' />

@@ -7,25 +7,26 @@
                 <div class="page-inner">
                     <div class="woocommerce">
                         <div class="woocommerce row row-large row-divided">
-
                             {{-- no cart --}}
-                            {{-- <div id="content" class="large-7 right col" role="main">
-                                <div class="page-inner">
-                                    <div class="woocommerce">
-                                        <div class="text-center pt pb">
-                                            <p class="cart-empty">Giỏ hàng của bạn đang trống</p>		
-                                            <p class="return-to-shop">
-                                                <a class="button primary wc-backward" href="{{route('showHome')}}">
-                                                    Quay về cửa hàng			
-                                                </a>
-                                            </p>
+                             @if (Cart::count() == 0)
+                                <div id="content" class="large-7 right col" role="main">
+                                    <div class="page-inner">
+                                        <div class="woocommerce">
+                                            <div class="text-center pt pb">
+                                                <p class="cart-empty">Giỏ hàng của bạn đang trống</p>		
+                                                <p class="return-to-shop">
+                                                    <a class="button primary wc-backward" href="{{route('showHome')}}">
+                                                        Quay về cửa hàng			
+                                                    </a>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div> --}}
-
-                            {{-- cart product --}}
-                            @include('frontend.shopping_cart.cart_content')
+                            @else
+                                {{-- cart product --}}
+                                @include('frontend.shopping_cart.cart_content')
+                            @endif
                             <div class="cart-collaterals large-5 col pb-0">
                                 <div class="cart-sidebar col-inner ">
                                     <div class="cart_totals ">
@@ -42,7 +43,7 @@
                                                 <tr class="cart-subtotal">
                                                     <th>Tạm tính</th>
                                                     <td data-title="Tạm tính">
-                                                        <span class="woocommerce-Price-amount amount">13.300.000
+                                                        <span class="woocommerce-Price-amount amount">{{Cart::subtotal()}}
                                                             <span class="woocommerce-Price-currencySymbol">₫</span>
                                                         </span>
                                                     </td>
@@ -51,7 +52,7 @@
                                                     <th>Tổng tiền</th>
                                                     <td data-title="Tổng tiền">
                                                         <strong>
-                                                            <span class="woocommerce-Price-amount amount">13.300.000
+                                                            <span class="woocommerce-Price-amount amount">{{Cart::subtotal()}}
                                                                 <span class="woocommerce-Price-currencySymbol">₫</span>
                                                             </span>
                                                         </strong> 
@@ -60,18 +61,18 @@
                                             </tbody>
                                         </table>
                                         <div class="wc-proceed-to-checkout">
-                                            <a href="http://banhocthongminh.namdinhweb.com/thanh-toan/" class="checkout-button button alt wc-forward">
+                                            <a href="{{route('payment')}}" class="checkout-button button alt wc-forward">
                                                 Tiến hành đặt hàng
                                             </a>
                                         </div>
                                     </div>
-                                    <form class="checkout_coupon mb-0" method="post">
+                                    {{-- <form class="checkout_coupon mb-0" method="post">
                                         <div class="coupon">
                                             <h3 class="widget-title"><i class="icon-tag"></i> Mã ưu đãi</h3>
                                             <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Mã ưu đãi"> 
                                             <input type="submit" class="is-form expand" name="apply_coupon" value="Áp dụng mã ưu đãi">
                                         </div>
-                                    </form>
+                                    </form> --}}
                                     <div class="cart-sidebar-content relative"></div>	
                                 </div>
                             </div>
