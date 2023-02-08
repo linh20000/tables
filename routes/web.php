@@ -100,7 +100,12 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 // Giao diện người dùng
 
 // 
-// Trang chủ 
+
+Route::get('/', function () {
+    return view('frontend.home.index');
+});
+
+// trang chủ 
 Route::get('/', [App\Http\Controllers\frontend\HomeInterfaceController::class, 'showHome'])->name('showHome');
 
 // Danh sách sản phẩm
