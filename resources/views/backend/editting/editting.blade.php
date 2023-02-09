@@ -5,11 +5,19 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
+<<<<<<< HEAD
                 <h1>{{$breadcrumb}}</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right justify-content-end">
                     <li class="breadcrumb-item"><a href="{{route('admin.home')}}">Trang chủ</a></li>
+=======
+                <h1>Thêm danh mục</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right justify-content-end">
+                    <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+>>>>>>> ef5faf839f9a58a2bcd3ef6f5eebe20ab518d963
                     <li class="breadcrumb-item active">{{$breadcrumb}}</li>
                 </ol>
             </div>
@@ -239,12 +247,21 @@
     }
    
 </script>
+<<<<<<< HEAD
 <script src="https://cdn.ckeditor.com/4.20.1/full/ckeditor.js"></script>
+=======
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+>>>>>>> ef5faf839f9a58a2bcd3ef6f5eebe20ab518d963
 <script>
 CKEDITOR.replace( 'summary-ckeditor' );
 </script>
 @endsection
 
 @section('script')
+<<<<<<< HEAD
+=======
+  <script src="https://cdn.ckeditor.com/4.20.1/full/ckeditor.js"></script>
+
+>>>>>>> ef5faf839f9a58a2bcd3ef6f5eebe20ab518d963
 <script src="{{asset('ckfinder/ckfinder.js')}}" ></script>
 @endsection

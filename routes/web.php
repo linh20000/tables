@@ -42,6 +42,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
         // xóa danh mục
         Route::get('delete-{id}', [App\Http\Controllers\admin\CategoryController::class, 'deleteCategory'])->name('admin.deleteCategory');
+
+        // tìm kiếm danh mục
+        Route::get('search', [App\Http\Controllers\Admin\CategoryController::class,'search'])->name('admin.category.search');
     });
 
     // banner
@@ -61,6 +64,31 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         // xóa banner
         Route::get('delete-{id}', [App\Http\Controllers\admin\BannerController::class, 'deleteBanner'])->name('admin.deleteBanner');
 
+    });
+      // feelback
+    Route::prefix('feedback')->group(function() {
+
+        // hiển thị phản hồi khách hành
+        Route::get('/get', [App\Http\Controllers\Admin\FeedbackController::class, 'showFeedback'])->name('showFeedback');
+
+        // thêm phản hồi khách hàng
+        Route::get('/create', [App\Http\Controllers\Admin\FeedbackController::class, 'showcreateFeedback'])->name('showcreateFeedback');
+        Route::post('/create', [App\Http\Controllers\Admin\FeedbackController::class, 'createFeedback'])->name('createFeedback');
+
+        // chỉnh sửa phản hồi
+        Route::get('/update-{id}', [App\Http\Controllers\Admin\FeedbackController::class, 'showUpdateFeedback'])->name('showUpdateFeedback');
+        Route::post('/update-{id}', [App\Http\Controllers\Admin\FeedbackController::class, 'UpdateFeedback'])->name('updateFeedback');
+        Route::get('/delete-{id}', [App\Http\Controllers\Admin\FeedbackController::class, 'deleteFeedback'])->name('deleteFeedback');
+        
+    });
+
+
+    // plugin
+    Route::prefix('editing')->group(function () {
+        // get
+        Route::get('update', [App\Http\Controllers\Admin\EditPluginController::class, 'getEdit'])->name('admin.getEditProfile');
+        // post
+        Route::post('update', [App\Http\Controllers\Admin\EditPluginController::class, 'updatePlugin'])->name('admin.getEditProfile');
     });
 
     // product ???
@@ -98,6 +126,23 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::post('update-{id}',[App\Http\Controllers\Admin\IntroduceController::class,'updateIntroduce'])->name('updateIntroduce');
     });
 
+
+    // order route
+    Route::prefix('order')->group(function() {
+        //show list order
+        Route::get('/get', [App\Http\Controllers\Admin\OrderController::class, 'showListOrder'])->name('showListOrder');
+        
+        // show detail order
+        Route::get('/details-{id}', [App\Http\Controllers\Admin\OrderController::class, 'showDetailsOrder'])->name('showDetailsOrder');
+        Route::post('update-{id}', [App\Http\Controllers\Admin\OrderController::class, 'updateStatus'])->name('updateStatus');
+
+        // delete order
+        Route::get('delete-{id}', [App\Http\Controllers\Admin\OrderController::class, 'deleteOrder'])->name('deleteOrder');
+
+    });
+
+
+    // policy
     Route::prefix('policy')->group(function(){
         Route::get('list',[PolicyController::class,'viewPolicy'])->name('policy.list');
         Route::get('create',[PolicyController::class,'createPolicy'])->name('policy.create');
@@ -131,16 +176,31 @@ Route::get('/', function () {
 Route::get('/', [App\Http\Controllers\frontend\HomeInterfaceController::class, 'showHome'])->name('showHome');
 
 // Danh sách sản phẩm
-Route::get('/danh-sach-san-pham', [App\Http\Controllers\frontend\HomeInterfaceController::class, 'ProductList'])->name('ProductList');
-
-// Giỏ hàng
-Route::get('/gio-hang', [App\Http\Controllers\frontend\ProductCartController::class, 'CartList'])->name('CartList');
+Route::get('/danh-sach-san-pham/{id}-{slug}', [App\Http\Controllers\frontend\HomeInterfaceController::class, 'ProductList'])->name('ProductList');
 
 // Tin tức
 Route::get('/tin-tuc', [App\Http\Controllers\frontend\HomeInterfaceController::class, 'showNewTitle'])->name('showNewTitle');
 
+// Giới thiệu
+Route::get('/gioi-thieu', [App\Http\Controllers\frontend\HomeInterfaceController::class, 'introduce'])->name('introduce');
+
 // Thanh toán
+Route::get('/thanh-toan', [App\Http\Controllers\frontend\HomeInterfaceController::class, 'Payment'])->name('payment');
+Route::post('/thanh-toan',[App\Http\Controllers\Frontend\HomeInterfaceController::class , 'sendOrder'])->name('sendRequest');
 
-Route::get('/thanh-toan', [App\Http\Controllers\frontend\HomeInterfaceController::class, 'Payment'])->name('Payment');
 
 
+// danh mục sản phẩm
+Route::get('/danh-muc-{id}-{slug}',[App\Http\Controllers\frontend\HomeInterfaceController::class, 'showProduct'])->name('showProduct');
+
+// chi tiết sản phẩm
+Route::get('/san-pham/{id}-{slug}', [App\Http\Controllers\frontend\HomeInterfaceController::class, 'showDetails'])->name('showDetails');
+
+// hiện thông tin giỏ hàng
+Route::get('/gio-hang',[App\Http\Controllers\frontend\AddProductCartController::class , 'showCartList'])->name('showCartList');
+
+// Thêm giỏ hàng
+Route::post('/them-{id}', [App\Http\Controllers\frontend\AddProductCartController::class, 'addCartajax'])->name('addCart.ajax');
+
+// xóa sản phẩm
+Route::get('/xoa-gio-hang-{rowId}',[App\Http\Controllers\frontend\AddProductCartController::class , 'deleteCart'])->name('deleteCart');

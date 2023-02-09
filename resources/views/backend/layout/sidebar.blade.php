@@ -64,6 +64,20 @@
               </li>
             </ul>
           </li>
+          <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Pages">Đánh giá khách hàng</span></a>
+            <ul class="menu-content">
+              <li><a class="d-flex align-items-center" href="{{route('showFeedback')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="License">Danh sách</span></a>
+              </li>
+              <li><a class="d-flex align-items-center" href="{{route('showcreateFeedback')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="API Key">Thêm đánh giá</span></a>
+              </li>
+            </ul>
+          </li>
+          <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Đơn hàng</span></a>
+            <ul class="menu-content">
+              <li><a class="d-flex align-items-center" href="{{route('showListOrder')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Danh sách</span></a>
+              </li>
+            </ul>
+          </li>
           <!--    -->
           <!--    -->
           <li class=" navigation-header"><span data-i18n="Misc">chỉnh sửa hệ thống </span><i data-feather="more-horizontal"></i>

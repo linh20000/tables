@@ -65,27 +65,27 @@
                     <div id="test"class="lightbox-by-id lightbox-content mfp-hide lightbox-white "style="max-width:650px ;padding:20px">
                         <div role="form" class="wpcf7" id="wpcf7-f417-p2-o2" lang="vi" dir="ltr">
                             <div class="screen-reader-response"></div>
-                            <form action="http://banhocthongminh.namdinhweb.com/#wpcf7-f417-p2-o1" method="post" class="wpcf7-form" novalidate="novalidate">
+                            <form action="" method="post" class="wpcf7-form" novalidate="novalidate">
                                 <h3>Đăng ký nhận tư vấn miễn phí</h3>
                                 <p>
                                     <span class="wpcf7-form-control-wrap ">
-                                        <input type="text" name="text-282" value="" size="40" class="wpcf7-form-control " aria-required="true" aria-invalid="false" placeholder="Họ và tên" />
+                                        <input type="text" name="name" value="" size="40" class="wpcf7-form-control " aria-required="true" aria-invalid="false" placeholder="Họ và tên" />
                                     </span>
                                     <br />
                                     <span class="wpcf7-form-control-wrap tel-542">
-                                        <input type="tel" name="tel-542" value="" size="40" class="wpcf7-form-control " aria-required="true" aria-invalid="false" placeholder="Số điện thoại" />
+                                        <input type="tel" name="phoneNumber" value="" size="40" class="wpcf7-form-control " aria-required="true" aria-invalid="false" placeholder="Số điện thoại" />
                                     </span>
                                     <br />
                                     <span class="wpcf7-form-control-wrap email-541">
-                                        <input type="email" name="email-541" value="" size="40" class="wpcf7-form-control " aria-invalid="false" placeholder="Địa chỉ Email" />
+                                        <input type="email" name="email" value="" size="40" class="wpcf7-form-control " aria-invalid="false" placeholder="Địa chỉ Email" />
                                     </span>
                                     <br />
                                     <span class="wpcf7-form-control-wrap text-282">
-                                        <input type="text" name="text-282" value="" size="40" class="wpcf7-form-control " aria-invalid="false" placeholder="Địa chỉ" />
+                                        <input type="text" name="address" value="" size="40" class="wpcf7-form-control " aria-invalid="false" placeholder="Địa chỉ" />
                                     </span>
                                     <br />
                                     <span class="wpcf7-form-control-wrap textarea-317">
-                                        <textarea name="textarea-317" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false" placeholder="Câu hỏi của anh/ chị..."></textarea>
+                                        <textarea name="content" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false" placeholder="Câu hỏi của anh/ chị..."></textarea>
                                     </span>
                                     <br />
                                     <input type="submit" value="Đăng ký ngay" class="wpcf7-form-control wpcf7-submit" />

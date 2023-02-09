@@ -85,19 +85,19 @@
 								</li>	
 							</ul><!-- .nav-dropdown -->
 						</li>
-						<li id="menu-item-46" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item active  menu-item-46"><a href="index.html" class="nav-top-link">Trang chủ</a></li>
-						<li id="menu-item-1387" class="menu-item menu-item-type-post_type menu-item-object-page  menu-item-1387"><a href="gioi-thieu/index.html" class="nav-top-link">Giới thiệu</a></li>
-						<li id="menu-item-1390" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  menu-item-1390 has-dropdown"><a href="danh-muc/san-pham/index.html" class="nav-top-link">SẢN PHẨM<i class="icon-angle-down" ></i></a>
+						<li id="menu-item-46" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item active  menu-item-46"><a href="{{route('showHome')}}" class="nav-top-link">Trang chủ</a></li>
+						<li id="menu-item-1387" class="menu-item menu-item-type-post_type menu-item-object-page  menu-item-1387"><a href="{{route('introduce')}}" class="nav-top-link">Giới thiệu</a></li>
+						<li id="menu-item-1390" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  menu-item-1390 has-dropdown"><a href="" class="nav-top-link">SẢN PHẨM<i class="icon-angle-down" ></i></a>
 							<ul class='nav-dropdown nav-dropdown-default'>
-								<li id="menu-item-1502" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-1502"><a href="danh-muc/san-pham/bo-ban-ghe-chong-can-chong-gu/index.html">Bộ bàn ghế chống cận chống gù</a></li>
-								<li id="menu-item-1503" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-1503"><a href="danh-muc/san-pham/ghe-chong-gu/index.html">Ghế chống gù</a></li>
-								<li id="menu-item-1504" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-1504"><a href="danh-muc/san-pham/phu-kien/index.html">Phụ kiện</a></li>
+								@foreach ($categories as $item)
+									<li id="menu-item-1504" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-1504"><a href="{{route('ProductList',[$item->id, Str::slug($item->name)])}}">{{$item->name}}</a></li>
+								@endforeach
 							</ul>
 						</li>
-						<li id="menu-item-44" class="label-new menu-item menu-item-type-post_type menu-item-object-page  menu-item-44"><a href="tin-tuc/index.html" class="nav-top-link">Tin tức</a></li>
-						<li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children  menu-item-43 has-dropdown"><a href="lien-he/index.html" class="nav-top-link">Liên hệ<i class="icon-angle-down" ></i></a>
+						<li id="menu-item-44" class="label-new menu-item menu-item-type-post_type menu-item-object-page  menu-item-44"><a href="{{route('showNewTitle')}}" class="nav-top-link">Tin tức</a></li>
+						<li id="menu-item-43" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children  menu-item-43 has-dropdown"><a href="" class="nav-top-link">Liên hệ<i class="icon-angle-down" ></i></a>
 							<ul class='nav-dropdown nav-dropdown-default'>
-								<li id="menu-item-1516" class="menu-item menu-item-type-post_type menu-item-object-page  menu-item-1516"><a href="dich-vu/index.html">Dịch vụ</a></li>
+								<li id="menu-item-1516" class="menu-item menu-item-type-post_type menu-item-object-page  menu-item-1516"><a href="">Dịch vụ</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -106,64 +106,61 @@
 					<ul class="header-nav header-nav-main nav nav-right  nav-size-large nav-uppercase">
 							<li class="cart-item has-icon has-dropdown">
 							<div class="header-button">
-								<a href="{{route('CartList')}}" title="Giỏ hàng" class="header-cart-link icon button circle is-outline is-small">
-									<span class="header-cart-title">
-										<span class="cart-price">
-											<span class="woocommerce-Price-amount amount">0
-												<span class="woocommerce-Price-currencySymbol">&#8363;</span>
-											</span>
-										</span>
-										</span>
+								<a href="{{route('showCartList')}}" title="Giỏ hàng" class="header-cart-link icon button circle is-outline is-small">
 									<i class="icon-shopping-bag" data-icon-label="0"></i>
 								</a>
 							</div>
+							@if (Cart::count() != 0)
+								{{-- CART title  --}}
+								<ul class="nav-dropdown nav-dropdown-default">
+									<li class="html widget_shopping_cart">
+										<div class="widget_shopping_cart_content">
+											<ul class="woocommerce-mini-cart cart_list product_list_widget ">
+												@foreach ($product_cart as $item)
+													<li class="woocommerce-mini-cart-item mini_cart_item">
+														<a href="{{route('deleteCart', $item->rowId)}}" class="remove" aria-label="Xóa sản phẩm nà" data-product_id="1394" data-product_sku="">×</a>													
+														<a href="{{route('showDetails', [$item->id, Str::slug($item->name)])}}">
+															<img width="180" height="180" src="{{$item->options->thumbnail}}" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" sizes="(max-width: 180px) 100vw, 180px">
+															{{$item->name}}							
+														</a>
+														<span class="quantity">{{$item->qty}} × 
+															<span class="woocommerce-Price-amount amount">{{$item->price}}
+																<span class="woocommerce-Price-currencySymbol">₫</span>
+															</span>
+														</span>					
+													</li>
+												@endforeach
+											</ul>
+											<p class="woocommerce-mini-cart__total total">
+												<strong>Tạm tính:</strong> 
+												<span class="woocommerce-Price-amount amount">
+													{{Cart::subtotal()}}
+													<span class="woocommerce-Price-currencySymbol">₫</span>
+												</span>
+											</p>
+											<p class="woocommerce-mini-cart__buttons buttons">
+												<a href="{{route('showCartList')}}" class="button wc-forward">Xem giỏ hàng</a>
+											</p>
+										</div>
+									</li>
+								</ul>
+							@else
+								{{-- NO CART --}}
+								<ul class="nav-dropdown nav-dropdown-default">
+									<li class="html widget_shopping_cart">
+										<div class="widget_shopping_cart_content">
+											<p class="woocommerce-mini-cart__empty-message">Không có sản phẩm trong giỏ</p>
+										</div>
+									</li>
+								</ul>
+							@endif
 
-							{{-- NO CART --}}
-							<ul class="nav-dropdown nav-dropdown-default">
-								<li class="html widget_shopping_cart">
-									<div class="widget_shopping_cart_content">
-										<p class="woocommerce-mini-cart__empty-message">Không có sản phẩm trong giỏ</p>
-									</div>
-								</li>
-							</ul>
-
-							{{-- CART title  --}}
-							{{-- <ul class="nav-dropdown nav-dropdown-default">
-								<li class="html widget_shopping_cart">
-									<div class="widget_shopping_cart_content">
-										<ul class="woocommerce-mini-cart cart_list product_list_widget ">
-											<li class="woocommerce-mini-cart-item mini_cart_item">
-												<a href="http://banhocthongminh.namdinhweb.com/gio-hang/?remove_item=f016e59c7ad8b1d72903bb1aa5720d53&amp;_wpnonce=64d4613fb0" class="remove" aria-label="Xóa sản phẩm nà" data-product_id="1394" data-product_sku="">×</a>													
-												<a href="http://banhocthongminh.namdinhweb.com/cua-hang/ban-ghe-chong-can-chong-gu-kd19-k15/">
-													<img width="180" height="180" src="//banhocthongminh.namdinhweb.com/wp-content/uploads/2017/11/b10-180x180.jpg" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" sizes="(max-width: 180px) 100vw, 180px">
-													BÀN GHẾ CHỐNG CẬN CHỐNG GÙ KD19 – K15&nbsp;							
-												</a>
-												<span class="quantity">1 × 
-													<span class="woocommerce-Price-amount amount">13.300.000
-														<span class="woocommerce-Price-currencySymbol">₫</span>
-													</span>
-												</span>					
-											</li>
-										</ul>
-										<p class="woocommerce-mini-cart__total total">
-											<strong>Tạm tính:</strong> 
-											<span class="woocommerce-Price-amount amount">
-												13.300.000
-												<span class="woocommerce-Price-currencySymbol">₫</span>
-											</span>
-										</p>
-										<p class="woocommerce-mini-cart__buttons buttons">
-											<a href="" class="button wc-forward">Xem giỏ hàng</a>
-											<a href="http://banhocthongminh.namdinhweb.com/thanh-toan/" class="button checkout wc-forward">Đặt hàng</a>
-										</p>
-									</div>
-								</li>
-							</ul> --}}
+							
 						</li>
 						<li class="html header-button-1">
 							<div class="header-button">
 								<a href="tel:0123456789" target="_self" class="button primary"  style="border-radius:99px;">
-									<span>Hotline : 0986.989.626</span>
+									<span>Hotline : 0987654321</span>
 								</a>
 							</div>
 						</li>
@@ -173,7 +170,7 @@
 					<ul class="mobile-nav nav nav-right ">
 						<li class="cart-item has-icon">
 							<div class="header-button">
-								<a href="{{route('CartList')}}" class="header-cart-link off-canvas-toggle nav-top-link icon button circle is-outline is-small" data-open="#cart-popup" data-class="off-canvas-cart" title="Giỏ hàng" data-pos="right">
+								<a href="{{route('showCartList')}}" class="header-cart-link off-canvas-toggle nav-top-link icon button circle is-outline is-small" data-open="#cart-popup" data-class="off-canvas-cart" title="Giỏ hàng" data-pos="right">
 									<i class="icon-shopping-bag" data-icon-label="0"></i>
 								</a>
 							</div>
@@ -183,36 +180,40 @@
 										<h4 class="uppercase">Giỏ hàng</h4>
 										<div class="is-divider"></div>
 									</div>
-									{{-- <div class="widget_shopping_cart_content">
-										<p class="woocommerce-mini-cart__empty-message">Không có sản phẩm trong giỏ</p>
-									</div> --}}
-
-									<div class="widget_shopping_cart_content">
-										<ul class="woocommerce-mini-cart cart_list product_list_widget ">
-											<li class="woocommerce-mini-cart-item mini_cart_item">
-												<a href="" class="remove" aria-label="Xóa sản phẩm" data-product_id="1394" data-product_sku="">×</a>													
-												<a href="#">
-													<img width="180" height="180" src="//banhocthongminh.namdinhweb.com/wp-content/uploads/2017/11/b10-180x180.jpg" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" sizes="(max-width: 180px) 100vw, 180px">
-													BÀN GHẾ CHỐNG CẬN CHỐNG GÙ KD19 – K15&nbsp;							
-												</a>
-												<span class="quantity">1 × 
-													<span class="woocommerce-Price-amount amount">13.300.000
-														<span class="woocommerce-Price-currencySymbol">₫</span>
-													</span>
-												</span>					
-											</li>
-										</ul>
-										<p class="woocommerce-mini-cart__total total">
-											<strong>Tạm tính:</strong> 
-											<span class="woocommerce-Price-amount amount">13.300.000
-												<span class="woocommerce-Price-currencySymbol">₫</span>
-											</span>
-										</p>
-										<p class="woocommerce-mini-cart__buttons buttons">
-											<a href="" class="button wc-forward">Xem giỏ hàng</a>
-											<a href="" class="button checkout wc-forward">Đặt hàng</a>
-										</p>
-									</div>
+									
+									@if (Cart::count() != 0)
+										<div class="widget_shopping_cart_content">
+											<ul class="woocommerce-mini-cart cart_list product_list_widget ">
+												@foreach ($product_cart as $item)
+													<li class="woocommerce-mini-cart-item mini_cart_item">
+														<a href="{{route('deleteCart', $item->rowId)}}" class="remove" aria-label="Xóa sản phẩm" data-product_id="1394" data-product_sku="">×</a>													
+														<a href="{{route('showDetails', [$item->id, Str::slug($item->name)])}}">
+															<img width="180" height="180" src="{{$item->options->thumbnail}}" class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image" alt="" sizes="(max-width: 180px) 100vw, 180px">
+															{{$item->name}}					
+														</a>
+														<span class="quantity">{{$item->qty}} × 
+															<span class="woocommerce-Price-amount amount">{{$item->price}}
+																<span class="woocommerce-Price-currencySymbol">₫</span>
+															</span>
+														</span>					
+													</li>
+												@endforeach
+											</ul>
+											<p class="woocommerce-mini-cart__total total">
+												<strong>Tạm tính:</strong> 
+												<span class="woocommerce-Price-amount amount">{{Cart::subtotal()}}
+													<span class="woocommerce-Price-currencySymbol">₫</span>
+												</span>
+											</p>
+											<p class="woocommerce-mini-cart__buttons buttons">
+												<a href="{{route('showCartList')}}" class="button wc-forward">Xem giỏ hàng</a>
+											</p>
+										</div>
+									@else
+										<div class="widget_shopping_cart_content">
+											<p class="woocommerce-mini-cart__empty-message">Không có sản phẩm trong giỏ</p>
+										</div>
+									@endif
 									<div class="cart-sidebar-content relative"></div>  
 								</div>
 							</div>

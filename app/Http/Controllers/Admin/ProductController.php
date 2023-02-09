@@ -10,6 +10,7 @@ class ProductController extends Controller
 
 {
     public function search(Request $request){
+        // dd($request->all());
         $product = Product::where('name', 'LIKE', '%'. $request->search .'%')->orWhere('product_code', 'LIKE', '%'. $request->search .'%')->get();
         $productLenght = count($product);
         return view('backend.product.list',['breadcrumb'=>'Danh sách sản phẩm'],compact('product','productLenght'));

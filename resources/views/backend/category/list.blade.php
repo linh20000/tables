@@ -52,13 +52,14 @@
             <table>
                 <tbody>
                 <tr>
-                    <form method="get" action="">
-                    <td>
-                        <input class="form-control" name="name" placeholder="Nhập tên danh mục" value="">
-                    </td>
-                    <td>
-                        <button type="submit" class="btn btn-secondary">Tìm kiếm</button>
-                    </td>
+                    <form method="get" action="{{route('admin.category.search')}}">
+                        <td>
+                            <input class="form-control" name="name" placeholder="Nhập tên danh mục" value="">
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-secondary">Tìm kiếm</button>
+                        </td>
+                        <td><a class="btn btn-secondary" href="{{route('admin.category')}}">Xóa tìm kiếm</a></td>
                     </form>
                 </tr>
             </tbody>

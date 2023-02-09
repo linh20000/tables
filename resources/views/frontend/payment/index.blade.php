@@ -6,7 +6,8 @@
            <div id="content" class="large-9 right col" role="main">
                 <div class="page-inner">
                     <div class="woocommerce">
-                        <form name="checkout" method="post" class="checkout woocommerce-checkout" action="" enctype="multipart/form-data">
+                        <form name="checkout" method="POST" class="checkout woocommerce-checkout" action="{{route('sendRequest')}}" enctype="multipart/form-data">
+                            @csrf
                             <div class="row pt-0 ">
                                 <div class="large-7 col  ">
                                     <div id="customer_details">
@@ -48,7 +49,7 @@
                                                 <div class="woocommerce-additional-fields__field-wrapper">
                                                     <p class="form-row notes" id="order_comments_field" data-priority="">
                                                         <label for="order_comments" class="">Ghi chú về đơn hàng</label>
-                                                        <textarea name="order_comments" class="input-text " id="order_comments" placeholder="Ghi chú về đơn hàng, ví dụ: gọi điện trước khi giao hàng" rows="2" cols="5"></textarea>
+                                                        <textarea name="note" class="input-text " id="order_comments" placeholder="Ghi chú về đơn hàng, ví dụ: gọi điện trước khi giao hàng" rows="2" cols="5"></textarea>
                                                     </p>					
                                                 </div>
                                             </div>
@@ -68,21 +69,23 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr class="cart_item">
-                                                            <td class="product-name">
-                                                                BÀN GHẾ CHỐNG CẬN CHỐNG GÙ KD19 – K15&nbsp;							 
-                                                                <strong class="product-quantity">× 1</strong>													
-                                                            </td>
-                                                            <td class="product-total">
-                                                                <span class="woocommerce-Price-amount amount">13.300.000<span class="woocommerce-Price-currencySymbol">₫</span></span>						
-                                                            </td>
-                                                        </tr>
+                                                        @foreach ($product_cart as $item)
+                                                            <tr class="cart_item">
+                                                                <td class="product-name">
+                                                                    {{$item->name}}						 
+                                                                    <strong class="product-quantity">× {{$item->qty}}</strong>													
+                                                                </td>
+                                                                <td class="product-total">
+                                                                    <span class="woocommerce-Price-amount amount">{{number_format($item->price * $item->qty)}}<span class="woocommerce-Price-currencySymbol">₫</span></span>						
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
                                                     </tbody>
                                                     <tfoot>
                                                         <tr class="cart-subtotal">
                                                             <th>Tạm tính</th>
                                                             <td>
-                                                                <span class="woocommerce-Price-amount amount">13.300.000
+                                                                <span class="woocommerce-Price-amount amount">{{Cart::subtotal()}}
                                                                     <span class="woocommerce-Price-currencySymbol">₫
                                                                     </span>
                                                                 </span>
@@ -92,7 +95,7 @@
                                                             <th>Tổng tiền</th>
                                                             <td>
                                                                 <strong>
-                                                                    <span class="woocommerce-Price-amount amount">13.300.000
+                                                                    <span class="woocommerce-Price-amount amount">{{Cart::subtotal()}}
                                                                         <span class="woocommerce-Price-currencySymbol">₫</span>
                                                                     </span>
                                                                 </strong> 
@@ -123,8 +126,10 @@
                                                     </ul>
                                                     <div class="form-row place-order">
                                                         <input type="submit" class="button alt" name="woocommerce_checkout_place_order" id="place_order" value="Đặt hàng" data-value="Đặt hàng">
-                                                        <input type="hidden" id="_wpnonce" name="_wpnonce" value="2b24bebb6b">
-                                                        <input type="hidden" name="_wp_http_referer" value="">	
+                                                        <input type="hidden" name="product_rowId[]" value="{{Cart::content()}}">
+                                                        <input type="hidden" name="total" value="{{Cart::subtotal()}}">
+                                                        <input type="hidden" name="qty" value="{{Cart::count()}}">
+                                                        <input type="hidden" name="status" value="0">
                                                     </div>
                                                 </div>
                                             </div>

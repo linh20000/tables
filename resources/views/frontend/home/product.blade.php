@@ -6,14 +6,16 @@
                 <div class="col-inner text-center"  >
                     <h3 class="tieu-de"><b></b>SẢN PHẨM MỚI NHẤT<b></b></h3>
                     <div class="row large-columns-4 medium-columns- small-columns-2 row-small slider row-slider slider-nav-reveal slider-nav-push"  data-flickity-options='{"imagesLoaded": true, "groupCells": "100%", "dragThreshold" : 5, "cellAlign": "left","wrapAround": true,"prevNextButtons": true,"percentPosition": true,"pageDots": false, "rightToLeft": false, "autoPlay" : false}'>
-                        <div class="product-small col has-hover post-1428 product type-product status-publish has-post-thumbnail  last instock sale shipping-taxable purchasable product-type-simple">
-                            @include('frontend.component.product_item')
-                        </div><!-- col -->
+                        @foreach ($new_product as $item)
+                            <div class="product-small col has-hover post-1428 product type-product status-publish has-post-thumbnail  last instock sale shipping-taxable purchasable product-type-simple">
+                                @include('frontend.component.product_item')
+                            </div><!-- col -->
+                        @endforeach
                     </div>
                     <div class="gap-element" style="display:block; height:auto; padding-top:20px" class="clearfix"></div>
                     <div class="row large-columns-4 medium-columns- small-columns-2 row-normal"></div>
-                    <a href="danh-muc/san-pham/index.html" target="_self" class="button primary"  >
-                        <span>SẢN PHẨM MỚI NHẤT</span>
+                    <a href="" target="_self" class="button primary"  style="border-radius:4px;">
+                        <span>Xem thêm</span>
                     </a>
                 </div>
             </div>
@@ -23,9 +25,11 @@
                     <div class="gap-element" style="display:block; height:auto; padding-top:20px" class="clearfix"></div>
                     <h3 class="tieu-de"><b></b> BÀN GHẾ THÔNG MINH<b></b></h3>
                     <div class="row large-columns-4 medium-columns- small-columns-2 row-small">
-                        <div class="product-small col has-hover post-1411 product type-product status-publish has-post-thumbnail product_cat-bo-ban-ghe-chong-can-chong-gu product_cat-san-pham last instock shipping-taxable purchasable product-type-simple">
-                            @include('frontend.component.product_item')
-                        </div><!-- col -->
+                        @foreach ($demo_product as $item)
+                            <div class="product-small col has-hover post-1411 product type-product status-publish has-post-thumbnail  last instock shipping-taxable purchasable product-type-simple">
+                                @include('frontend.component.product_item')
+                            </div><!-- col -->
+                        @endforeach
                     </div>
                 </div>
             </div>

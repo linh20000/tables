@@ -3,9 +3,7 @@
         <div class="flex-col flex-grow medium-text-center">
         <div class="is-large">
             <nav class="woocommerce-breadcrumb breadcrumbs">
-            <a href="../../index.html">Trang chủ</a>
-            <span class="divider">&#47;</span>
-            <a href="../../cua-hang/index.html">Cửa hàng</a>
+            <a href="{{route('showHome')}}">Trang chủ</a>
             <span class="divider">&#47;</span> SẢN PHẨM
             </nav>
         </div>

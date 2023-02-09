@@ -18,5 +18,7 @@ class Category extends Model
         'seo_description',
         'seo_title',
     ];
-
+    public function childs(){
+        return $this->hasMany(Category::class ,'parent_id');
+    }
 }

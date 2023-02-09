@@ -153,6 +153,9 @@
                 <button class="btn btn-primary btn-toggle-sidebar w-100 waves-effect waves-float waves-light" id="popup-1-button">
                     <span class="align-middle">Chọn ảnh</span>
                 </button>
+                @if ($errors->has('thumbnail'))
+                    <span class="text-danger d-block mt-1">{{ $errors->first('thumbnail') }}</span>
+                @endif
             </div>
         </div>
     </div>
