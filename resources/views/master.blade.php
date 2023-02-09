@@ -5,7 +5,19 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<link rel="pingback" href="xmlrpc.php" />
-	<title>Bàn học thông minh dẹp chuẩn seo &#8211;</title>
+	{!! SEOMeta::generate() !!}
+    {!! OpenGraph::generate() !!}
+    {!! Twitter::generate() !!}
+    {!! JsonLd::generate() !!}
+
+    <!-- OR -->
+    {!! SEO::generate() !!}
+
+    <!-- MINIFIED -->
+    {!! SEO::generate(true) !!}
+
+    <!-- LUMEN -->
+    {!! app('seotools')->generate() !!}
 	<meta name='csrf-token' content="{{csrf_token()}}">				
 	<link rel='stylesheet' id='menu-icons-extra-css'  href={{asset('wp-content/plugins/menu-icons/css/extra.mincf86.css?ver=0.10.2')}} type='text/css' media='all' />
 	<link rel='stylesheet' id='contact-form-7-css'  href={{asset('wp-content/plugins/contact-form-7/includes/css/styles33a6.css?ver=4.9')}} type='text/css' media='all' />
@@ -18,6 +30,7 @@
 	<script type='text/javascript' src={{asset('wp-includes/js/jquery/jqueryb8ff.js?ver=1.12.4')}}></script>
 	<script type='text/javascript' src={{asset('wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1')}}></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<link rel="shortcut icon" type="image/png" href="{{asset('favicon.png')}}"/>
 	<link rel="stylesheet" href="public/asset/table.js"> 
 	<link rel="canonical" href="index.html" />
 	<link rel='shortlink' href='index.html' />

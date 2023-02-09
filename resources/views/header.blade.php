@@ -43,8 +43,8 @@
 			<div class="header-inner flex-row container logo-left medium-logo-center" role="navigation">
 				<div id="logo" class="flex-col logo">
 					<a href="{{route('showHome')}}" title="" >
-						<img width="283" height="70" src="wp-content/uploads/2017/12/chu-ky-so-logo.png" class="header_logo header-logo" alt="Mẫu website bàn học thông minh dẹp chuẩn seo"/>
-						<img  width="283" height="70" src="wp-content/uploads/2017/12/chu-ky-so-logo.png" class="header-logo-dark" alt="Mẫu website bàn học thông minh dẹp chuẩn seo"/>
+						<img width="283" height="70" src="wp-content/uploads/2017/12/chu-ky-so-logo.png" class="header_logo header-logo" alt=""/>
+						<img  width="283" height="70" src="wp-content/uploads/2017/12/chu-ky-so-logo.png" class="header-logo-dark" alt=""/>
 					</a>
 				</div>
 				<div class="flex-col show-for-medium flex-left">
@@ -108,6 +108,7 @@
 							<div class="header-button">
 								<a href="{{route('showCartList')}}" title="Giỏ hàng" class="header-cart-link icon button circle is-outline is-small">
 									<i class="icon-shopping-bag" data-icon-label="0"></i>
+									<span class="qty">{{Cart::count()}}</span>
 								</a>
 							</div>
 							@if (Cart::count() != 0)
@@ -171,7 +172,8 @@
 						<li class="cart-item has-icon">
 							<div class="header-button">
 								<a href="{{route('showCartList')}}" class="header-cart-link off-canvas-toggle nav-top-link icon button circle is-outline is-small" data-open="#cart-popup" data-class="off-canvas-cart" title="Giỏ hàng" data-pos="right">
-									<i class="icon-shopping-bag" data-icon-label="0"></i>
+									<i class="icon-shopping-bag"></i>
+									<span class="qty">{{Cart::count()}}</span>
 								</a>
 							</div>
 							<div id="cart-popup" class="mfp-hide widget_shopping_cart">

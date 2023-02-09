@@ -170,8 +170,13 @@
                 $('.error_email').text('');
                 $('.error_address').text('');
                 $('.error_content').text('');
+                 let name = $('input[name=name]').val();
+                    phoneNumber.val('');
+                    emai.val('');
+                    address.val('');
+                    content.val('');
+                    $('#test').css('display', 'none')
 
-                
             },
             error: function(e) {
                 if (e.responseJSON.errors.name) {

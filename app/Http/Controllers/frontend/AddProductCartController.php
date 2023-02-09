@@ -8,7 +8,11 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\DB;
-
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\TwitterCard;
+use Artesaos\SEOTools\Facades\JsonLd;
+use Artesaos\SEOTools\Facades\SEOTools;
 
 class AddProductCartController extends Controller
 {
@@ -31,6 +35,8 @@ class AddProductCartController extends Controller
 
     }
     public function showCartList() {
+
+        SEOMeta::setTitle("Giỏ hàng");
         return view('frontend.shopping_cart.index');
     } 
     public function deleteCart($rowId) {

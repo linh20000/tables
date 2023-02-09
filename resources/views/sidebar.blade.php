@@ -27,7 +27,7 @@
 			<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children menu-item-1390"><a href="" class="nav-top-link">SẢN PHẨM</a>
 				<ul class=children>
 					@foreach ($categories as $item)
-						<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1504"><a href="{{route('showProduct', [$item->id, Str::slug($item->name)])}}">{{$item->name}}</a></li>
+						<li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-1504"><a href="{{route('ProductList', [$item->id, Str::slug($item->name)])}}">{{$item->name}}</a></li>
 					@endforeach
 				</ul>
 			</li>

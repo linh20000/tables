@@ -8,41 +8,46 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Form_comment;
 use App\Models\Order;
+use App\Models\Blog;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\TwitterCard;
+use Artesaos\SEOTools\Facades\JsonLd;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class HomeInterfaceController extends Controller
 {
-
-
     // function show home 
     public function showHome()
     {
         // get new product 
         $new_product = Product::orderBy('created_at', 'DESC')->where('status','=', '1')->limit(6)->get();
+
+        $blog = Blog::orderBy('created_at', 'DESC')->limit(5)->get();
+        // dd($blog);
         // dd($new_product);
-
+        
         // demo product
-
+        SEOTools::setTitle('Bàn ghế thông minh');
+        SEOTools::setDescription('Bàn ghế thông minh');
+        SEOTools::opengraph()->setUrl('http://127.0.0.1:8000/');
+        // SEOTools::setCanonical('https://codecasts.com.br/lesson');
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        // SEOTools::twitter()->setSite('@LuizVinicius73');
         $demo_product = Product::where('status','=', '1')->limit(10)->get();
 
         // get feedback
         $feedback = Feedback::orderBy('created_at', 'DESC')->get();
-        return view('frontend.home.index',compact('feedback','new_product','demo_product'));
+        return view('frontend.home.index',compact('feedback','new_product','demo_product','blog'));
     }
-
     //  end funtion show home
-
-    
-    // start function show new title
-    public function showNewTitle()
-    {
-        return view('frontend.blog.index');
-    }
-    // end function show new title
-
+   
     // start function show product
     public function ProductList($id, $slug)
     {
+         SEOTools::setTitle('Sản phẩm bàn ghế');
+        SEOTools::setDescription('Bàn ghế thông minh');
         $cate = Category::where('id', $id)->first();
         // dd($cate);
         $product = Product::where('category_id',$cate->id)->get();
@@ -50,26 +55,20 @@ class HomeInterfaceController extends Controller
         return view('frontend.product.index', compact('product'));
     } 
     // end function show product
-
-    // start function payment
-    public function Payment()
-    {
-        return view('frontend.payment.index');
-    } 
-    // end function payment
-
     // start function show introduce
     public function introduce()
     {
+        SEOTools::setTitle('Giới thiệu về chúng tôi');
         return view('frontend.introduce.index');
     } 
-
     // end function show introduce
 
     // start function show details product
     public function showDetails($id, $slug) {
         $product = Product::where('status','=', '1')->limit(10)->get();
         $details_product = Product::find($id);
+        SEOTools::setTitle($details_product->name);
+        
         // dd($details_product);
         return view('frontend.details.index', compact('product', 'details_product'));
     }
@@ -130,4 +129,17 @@ class HomeInterfaceController extends Controller
         Form_comment::create($comment);
         return response()->json(['success'=>'Đã gửi comment']);
     }
+     // start function show new title
+    public function showNewTitle()
+    {
+        return view('frontend.blog.index');
+    }
+    // end function show new title
+
+    // start function payment
+    public function Payment()
+    {
+        return view('frontend.payment.index');
+    } 
+    // end function payment
 }
