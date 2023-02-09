@@ -196,3 +196,8 @@ Route::post('/them-{id}', [App\Http\Controllers\frontend\AddProductCartControlle
 
 // xóa sản phẩm
 Route::get('/xoa-gio-hang-{rowId}',[App\Http\Controllers\frontend\AddProductCartController::class , 'deleteCart'])->name('deleteCart');
+
+
+// tư vấn 
+
+Route::post('/tu-van',[App\Http\Controllers\frontend\AppointmentHomeController::class , 'advisory'])->name('advisory');

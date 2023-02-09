@@ -15,7 +15,7 @@ class IntroduceController extends Controller
     function updateIntroduce(Request $request) {
         $request->validate([
             'name'=>'required|max:2000',
-            'description'=>'required|max:2000',
+            'description'=>'required',
             'seo_title'=>'required|max:2000',
         ],
         [

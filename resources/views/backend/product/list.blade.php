@@ -91,7 +91,7 @@
                         <th style=" font-size:10px;width: 15%">
                             tên
                         </th>
-                        <th style=" font-size:10px;width: 20%">
+                        <th style=" font-size:10px;width: 15%">
                             Mã sản phẩm
                         </th>
                         <th style=" font-size:10px;width: 10%">
