@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\PolicyController;
+use App\Http\Controllers\frontend\HomeInterfaceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -209,3 +210,7 @@ Route::get('/xoa-gio-hang-{rowId}',[App\Http\Controllers\frontend\AddProductCart
 // tư vấn 
 
 Route::post('/tu-van',[App\Http\Controllers\frontend\AppointmentHomeController::class , 'advisory'])->name('advisory');
+// book
+Route::get('/comment',[HomeInterfaceController::class , 'getComment'])->name('getComment');
+// Route::post('/dat-lich',[App\Http\Controllers\Frontend\FrontendController::class , 'appointments'])->name('appointments');
+Route::post('/comment',[HomeInterfaceController::class , 'addComment'])->name('addComment.ajax');

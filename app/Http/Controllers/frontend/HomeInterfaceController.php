@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Feedback;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Form_comment;
 use App\Models\Order;
 
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -107,4 +108,27 @@ class HomeInterfaceController extends Controller
         return back()->with('success', 'Bạn đã đặt hàng thành công');
     }
     // end function order
+
+    public function getComment(){
+        return view('frontend.blog.form_comment');
+    }
+
+    public function addComment(Request $request) {
+        $request->validate(
+        [
+            'author'=>'required',
+            'comment'=>'required',
+            'email'=>'required',
+            'url'=>'required',
+        ],
+        [
+            'author.required'=>'Vui lòng nhập họ tên !',
+            'comment.required'=>'Nhập bình luận !',
+            'email.required'=>'Nhập email !',
+            'url.required'=>'Nhập url',
+        ]);
+        $comment = $request->all();
+        Form_comment::create($comment);
+        return response()->json(['success'=>'Đã gửi comment']);
+    }
 }
