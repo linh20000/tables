@@ -3833,6 +3833,7 @@ img.mfp-img {
 }
 .processing:before,
 .loading-spin {
+    display: none !important;
     content: "";
     margin: 0px auto;
     font-size: 10px;
@@ -7564,9 +7565,6 @@ ul.menu > li.has-child,
 .wpcf7 .wpcf7-response-output {
     margin: 5px 0 0 0;
     border-radius: 10px;
-}
-.wpcf7-form .processing * {
-    opacity: 0.8;
 }
 .password-required form.post-password-form {
     max-width: 620px;

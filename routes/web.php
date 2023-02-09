@@ -209,7 +209,7 @@ Route::get('/xoa-gio-hang-{rowId}',[App\Http\Controllers\frontend\AddProductCart
 
 // tư vấn 
 
-Route::post('/tu-van',[App\Http\Controllers\frontend\AppointmentHomeController::class , 'advisory'])->name('advisory');
+Route::post('/tu-van',[App\Http\Controllers\frontend\AppointmentHomeController::class , 'advisory'])->name('advisory.ajax');
 // book
 Route::get('/comment',[HomeInterfaceController::class , 'getComment'])->name('getComment');
 // Route::post('/dat-lich',[App\Http\Controllers\Frontend\FrontendController::class , 'appointments'])->name('appointments');

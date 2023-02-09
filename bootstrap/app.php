@@ -11,9 +11,14 @@
 |
 */
 
+// $app = new Laravel\Lumen\Application(
+//     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
+// );
 $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +30,7 @@ $app = new Illuminate\Foundation\Application(
 | incoming requests to this application from both the web and CLI.
 |
 */
+// $app->register(Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class);
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,

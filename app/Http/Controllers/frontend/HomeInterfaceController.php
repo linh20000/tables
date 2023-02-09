@@ -8,7 +8,6 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Form_comment;
 use App\Models\Order;
-
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class HomeInterfaceController extends Controller
