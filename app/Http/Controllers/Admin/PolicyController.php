@@ -37,7 +37,7 @@ class PolicyController extends Controller
         $validate = $request->validate($requi, $messages);
         $data = $request->all();
         Policy::create($data);
-        return redirect(route('policy.list'));
+        return redirect(route('policy.list'))->with('success', 'Thêm mới thành công!!!');
     }
 
     public function getUpdatePolicy($id){
@@ -57,6 +57,6 @@ class PolicyController extends Controller
     public function deletepolicy($id){
         $policy = policy::findOrFail($id);
         $policy->delete();
-        return redirect(route('policy.list'));
+        return redirect(route('policy.list'))->with('success', 'Đã xóa...');
     }
 }

@@ -107,6 +107,14 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('deletePolicy/{id}', [PolicyController::class, 'deletePolicy'])->name('policy.delete');
     });
 
+    // editting
+    Route::prefix('editing')->group(function () {
+        // get
+        Route::get('update', [App\Http\Controllers\Admin\EditProfileController::class, 'getEdit'])->name('admin.getEditProfile');
+        // post
+        Route::post('update', [App\Http\Controllers\Admin\EditProfileController::class, 'updateProfile'])->name('admin.getEditProfile');
+    });
+
 
 });
 
