@@ -24,7 +24,7 @@ class BlogController extends Controller
         $requi = [
             'name'  => 'required|max:255',
             'subname' => 'required|max:255',
-            'description' => 'required|max:255',
+            'description' => 'required',
             'seo_title' => 'required|max:255',
             'seo_description' => 'required|max:255',
             'seo_keyword' => 'required|max:255',
@@ -42,7 +42,7 @@ class BlogController extends Controller
         $validate = $request->validate($requi, $messages);
         $data = $request->all();
         Blog::create($data);
-        return redirect(route('blog.list'));
+        return redirect(route('blog.list'))->with('success', 'Thêm thành công...');
     }
 
     public function getUpdateBlog($id){
@@ -56,12 +56,12 @@ class BlogController extends Controller
         $blog = Blog::findOrFail($id);
         $data = $request->all();
         $blog->update($data);
-        return redirect(route('blog.list'));
+        return redirect(route('blog.list'))->with('success', 'Chỉnh sửa thành công.');
     }
 
     public function deleteBlog($id){
         $blog = Blog::findOrFail($id);
         $blog->delete();
-        return redirect(route('blog.list'));
+        return redirect(route('blog.list'))->with('success', 'Đã xóa.');
     }
 }
