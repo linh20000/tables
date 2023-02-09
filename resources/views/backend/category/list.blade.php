@@ -59,6 +59,7 @@
                         <td>
                             <button type="submit" class="btn btn-secondary">Tìm kiếm</button>
                         </td>
+                        <td><a class="btn btn-secondary" href="{{route('admin.category')}}">Xóa tìm kiếm</a></td>
                     </form>
                 </tr>
             </tbody>

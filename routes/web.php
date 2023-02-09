@@ -126,6 +126,23 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::post('update-{id}',[App\Http\Controllers\Admin\IntroduceController::class,'updateIntroduce'])->name('updateIntroduce');
     });
 
+
+    // order route
+    Route::prefix('order')->group(function() {
+        //show list order
+        Route::get('/get', [App\Http\Controllers\Admin\OrderController::class, 'showListOrder'])->name('showListOrder');
+        
+        // show detail order
+        Route::get('/details-{id}', [App\Http\Controllers\Admin\OrderController::class, 'showDetailsOrder'])->name('showDetailsOrder');
+        Route::post('update-{id}', [App\Http\Controllers\Admin\OrderController::class, 'updateStatus'])->name('updateStatus');
+
+        // delete order
+        Route::get('delete-{id}', [App\Http\Controllers\Admin\OrderController::class, 'deleteOrder'])->name('deleteOrder');
+
+    });
+
+
+    // policy
     Route::prefix('policy')->group(function(){
         Route::get('list',[PolicyController::class,'viewPolicy'])->name('policy.list');
         Route::get('create',[PolicyController::class,'createPolicy'])->name('policy.create');
@@ -161,6 +178,8 @@ Route::get('/gioi-thieu', [App\Http\Controllers\frontend\HomeInterfaceController
 
 // Thanh toán
 Route::get('/thanh-toan', [App\Http\Controllers\frontend\HomeInterfaceController::class, 'Payment'])->name('payment');
+Route::post('/thanh-toan',[App\Http\Controllers\Frontend\HomeInterfaceController::class , 'sendOrder'])->name('sendRequest');
+
 
 
 // danh mục sản phẩm

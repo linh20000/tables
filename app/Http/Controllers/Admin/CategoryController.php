@@ -90,8 +90,7 @@ class CategoryController extends Controller
 
     // tìm kiếm danh mục
     public function search(Request $request){
-        // dd($request->all());
-        $categories = Category::where('name', 'LIKE', '%'. $request->name .'%')->orWhere('seo_title', 'LIKE', '%'. $request->name .'%')->orWhere('seo_keyword', 'LIKE', '%'. $request->name .'%')->get();
+        $categories = Category::where('name', 'LIKE', '%'. $request->name .'%')->orWhere('title', 'LIKE', '%'. $request->name .'%')->get();
         $dataLenght = count($categories);
         return view('backend.category.list', [
             'breadcrumb'=>'Quản lý danh mục'
