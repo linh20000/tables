@@ -24,7 +24,7 @@ class BlogController extends Controller
         $requi = [
             'name'  => 'required|max:255',
             'subname' => 'required|max:255',
-            'description' => 'required|max:255',
+            'description' => 'required',
             'seo_title' => 'required|max:255',
             'seo_description' => 'required|max:255',
             'seo_keyword' => 'required|max:255',

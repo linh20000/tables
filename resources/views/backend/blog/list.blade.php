@@ -32,7 +32,7 @@
                                     <th style="width: 5%">
                                         Tên
                                     </th>
-                                    <th style="width: 15%">
+                                    <th style="width: 10%">
                                         Ảnh
                                     </th>
                                     <th style="width: 5%">
