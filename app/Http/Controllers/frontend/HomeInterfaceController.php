@@ -9,6 +9,8 @@ use App\Models\Category;
 use App\Models\Form_comment;
 use App\Models\Order;
 use App\Models\Blog;
+use App\Models\Config;
+
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\TwitterCard;
@@ -25,16 +27,16 @@ class HomeInterfaceController extends Controller
         $new_product = Product::orderBy('created_at', 'DESC')->where('status','=', '1')->limit(6)->get();
 
         $blog = Blog::orderBy('created_at', 'DESC')->limit(5)->get();
-        // dd($blog);
-        // dd($new_product);
-        
-        // demo product
-        SEOTools::setTitle('Bàn ghế thông minh');
-        SEOTools::setDescription('Bàn ghế thông minh');
-        SEOTools::opengraph()->setUrl('http://127.0.0.1:8000/');
-        // SEOTools::setCanonical('https://codecasts.com.br/lesson');
+
+        // seo search
+        $config = Config::first();
+        SEOTools::setTitle($config->seo_title);
+        SEOTools::setDescription($config->seo_description);
         SEOTools::opengraph()->addProperty('type', 'articles');
-        // SEOTools::twitter()->setSite('@LuizVinicius73');
+        SEOTools::twitter()->setSite($config->seo_title);
+        // end seo search
+
+        // demo product
         $demo_product = Product::where('status','=', '1')->limit(10)->get();
 
         // get feedback
@@ -46,11 +48,15 @@ class HomeInterfaceController extends Controller
     // start function show product
     public function ProductList($id, $slug)
     {
-         SEOTools::setTitle('Sản phẩm bàn ghế');
-        SEOTools::setDescription('Bàn ghế thông minh');
         $cate = Category::where('id', $id)->first();
         // dd($cate);
         $product = Product::where('category_id',$cate->id)->get();
+
+        // SEO PRODUCT
+        SEOTools::setTitle($cate->seo_title);
+        SEOTools::setDescription($cate->seo_description);
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::twitter()->setSite($cate->seo_title); 
         // dd($product);
         return view('frontend.product.index', compact('product'));
     } 
@@ -67,9 +73,14 @@ class HomeInterfaceController extends Controller
     public function showDetails($id, $slug) {
         $product = Product::where('status','=', '1')->limit(10)->get();
         $details_product = Product::find($id);
-        SEOTools::setTitle($details_product->name);
-        
-        // dd($details_product);
+
+        // SEO DETAIL PRODUCT
+        SEOTools::setTitle($details_product->seo_title);
+        SEOTools::setDescription($details_product->seo_description);
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::twitter()->setSite($details_product->seo_title); 
+
+
         return view('frontend.details.index', compact('product', 'details_product'));
     }
     // end function show details product
