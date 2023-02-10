@@ -17,7 +17,7 @@
                      <div class="gap-element" style="display:block; height:auto; padding-top:20px" class="clearfix">
                      </div>
                      <div class="row large-columns-4 medium-columns- small-columns-2 row-normal"></div>
-                     <a href="" target="_self" class="button primary" style="border-radius:4px;">
+                     <a href="{{route('showAllProduct')}}" target="_self" class="button primary" style="border-radius:4px;">
                          <span>Xem thêm</span>
                      </a>
                  </div>

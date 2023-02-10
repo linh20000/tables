@@ -54,16 +54,37 @@
                                         @enderror
                                     </div>
                                     <div class="form-group mt-1 mb-1">
-                                        <label for="seo_title" class="form-label mb-1"> Tiêu đề</label>
-                                        <input type="text" id="seo_title" name="seo_title" value="{{$introduce->seo_title}}" class="form-control" placeholder="Nhập tiêu đề">
-                                        @if ($errors->has('seo_title'))
-                                            <span class="text-danger d-block mt-1">{{ $errors->first('seo_title') }}</span>
+                                        <label for="title" class="form-label mb-1"> Tiêu đề</label>
+                                        <input type="text" id="title" name="title" value="{{$introduce->title}}" class="form-control" placeholder="Nhập tiêu đề">
+                                        @if ($errors->has('title'))
+                                            <span class="text-danger d-block mt-1">{{ $errors->first('title') }}</span>
                                         @endif
                                     </div>
                                     <div class="form-group mt-1 mb-1">
                                         <label for="description" class="form-label mb-1">Nội dung</label>
                                         <textarea class="form-control" id="summary-ckeditor" name="description">{{ $introduce->description }}</textarea>
                                         @error('description')
+                                        <span class="text-danger mt-1 d-block">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <br>
+                                    <h3 class="card-title">Thông tin tìm kiếm</h3>
+                                    <div class="form-group mt-1 mb-1">
+                                        <label for="seo_title" class="form-label mb-1">seo title</label>
+                                        <input type="text" id="seo_title" name="seo_title" value="{{$introduce->seo_title}}" class="form-control" placeholder="Nhập thông tin">
+                                        @error('seo_title')
+                                        <span class="text-danger mt-1 d-block">{{ $message }}</span>
+                                        @enderror
+                                    </div><div class="form-group mt-1 mb-1">
+                                        <label for="seo_description" class="form-label mb-1">seo description</label>
+                                        <input type="text" id="seo_description" name="seo_description" value="{{$introduce->seo_description}}" class="form-control" placeholder="Nhập thông tin">
+                                        @error('seo_description')
+                                        <span class="text-danger mt-1 d-block">{{ $message }}</span>
+                                        @enderror
+                                    </div><div class="form-group mt-1 mb-1">
+                                        <label for="seo_keyword" class="form-label mb-1">seo keyword</label>
+                                        <input type="text" id="seo_keyword" name="seo_keyword" value="{{$introduce->seo_keyword}}" class="form-control" placeholder="Nhập thông tin">
+                                        @error('seo_keyword')
                                         <span class="text-danger mt-1 d-block">{{ $message }}</span>
                                         @enderror
                                     </div>

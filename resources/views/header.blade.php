@@ -7,15 +7,15 @@
 							<li class="header-contact-wrapper">
 								<ul id="header-contact" class="nav nav-divided nav-uppercase header-contact">
 									<li class="">
-										<a href="{{$config->email}}" class="tooltip" title="{{$config->email}}">
+										<a href="mailto:{{$config->email}}" class="tooltip" title="{{$config->email}}">
 											<i class="icon-envelop" style="font-size:15px;"></i>			       
 											<span>{{$config->email}}</span>
 										</a>
 									</li>
 									<li class="">
-										<a href="tel:0986.989.626" class="tooltip" title="0986.989.626">
+										<a href="tel:{{$config->hotline}}" class="tooltip" title="{{$config->hotline}}">
 											<i class="icon-phone" style="font-size:15px;"></i>
-											<span>0987654321</span>
+											<span>{{$config->hotline}}</span>
 										</a>
 									</li>
 								</ul>
@@ -61,33 +61,28 @@
 				<div class="flex-col hide-for-medium flex-left flex-grow">
 					<ul class="header-nav header-nav-main nav nav-left  nav-size-large nav-uppercase" >
 						<li class="header-search header-search-dropdown has-icon has-dropdown menu-item-has-children">
-							<a href="#" class="is-small"><i class="icon-search" ></i></a>
+							<a style="cursor:pointer;" class="is-small"><i class="icon-search" ></i></a>
 							<ul class="nav-dropdown nav-dropdown-default">
 								<li class="header-search-form search-form html relative has-icon">
-									<div class="header-search-form-wrapper">
-										<div class="searchform-wrapper ux-search-box relative form-flat is-normal">
-											<form method="get" class="searchform" action="" role="search">
-												<div class="flex-row relative">
-													<div class="flex-col flex-grow">
-														<input type="search" class="search-field mb-0" name="s" value="" placeholder="Bạn cần tìm gì?..." />
-														<input type="hidden" name="post_type" value="product" />
-													</div><!-- .flex-col -->
-													<div class="flex-col">
-														<button type="submit" class="ux-search-submit submit-button secondary button icon mb-0">
-															<i class="icon-search" ></i>				
-														</button>
-													</div><!-- .flex-col -->
-												</div><!-- .flex-row -->
-												<div class="live-search-results text-left z-top"></div>
-											</form>
-										</div>	
-									</div>
+									<form method="get" class="searchform" action="{{route('search')}}" role="search">
+										<div class="flex-row relative">
+											<div class="flex-col flex-grow">
+												<input type="search" class="search-field mb-0" name="search" value="" placeholder="Bạn cần tìm gì?..." />
+											</div><!-- .flex-col -->
+											<div class="flex-col">
+												<button type="submit" class="ux-search-submit submit-button secondary button icon mb-0" style="background-color:transparent;border:none;">
+													<i class="icon-search" style="color:#555;"></i>				
+												</button>
+											</div><!-- .flex-col -->
+										</div><!-- .flex-row -->
+										<div class="live-search-results text-left z-top"></div>
+									</form>
 								</li>	
 							</ul><!-- .nav-dropdown -->
 						</li>
 						<li id="menu-item-46" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item active  menu-item-46"><a href="{{route('showHome')}}" class="nav-top-link">Trang chủ</a></li>
 						<li id="menu-item-1387" class="menu-item menu-item-type-post_type menu-item-object-page  menu-item-1387"><a href="{{route('introduce')}}" class="nav-top-link">Giới thiệu</a></li>
-						<li id="menu-item-1390" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  menu-item-1390 has-dropdown"><a href="" class="nav-top-link">SẢN PHẨM<i class="icon-angle-down" ></i></a>
+						<li id="menu-item-1390" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-has-children  menu-item-1390 has-dropdown"><a style="cursor:pointer;" class="nav-top-link">SẢN PHẨM<i class="icon-angle-down" ></i></a>
 							<ul class='nav-dropdown nav-dropdown-default'>
 								@foreach ($categories as $item)
 									<li id="menu-item-1504" class="menu-item menu-item-type-taxonomy menu-item-object-product_cat  menu-item-1504"><a href="{{route('ProductList',[$item->id, Str::slug($item->name)])}}">{{$item->name}}</a></li>
@@ -160,8 +155,8 @@
 						</li>
 						<li class="html header-button-1">
 							<div class="header-button">
-								<a href="tel:0123456789" target="_self" class="button primary"  style="border-radius:99px;">
-									<span>Hotline : 0987654321</span>
+								<a href="tel:+84{{$config->hotline}}" target="_self" class="button primary"  style="border-radius:99px;">
+									<span>Hotline :{{$config->hotline}}</span>
 								</a>
 							</div>
 						</li>

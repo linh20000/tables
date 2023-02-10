@@ -61,13 +61,22 @@
                 <div class="col hide-for-small medium-4 small-6 large-4"  >
                     <div class="col-inner"  >
                         <h3><span style="color: #ffffff;">Về chúng tôi</span></h3>
-                        <p style="color: #ffffff;">Đây là giao diện bán hàng được thiết kế và duy trì bởi Topweb. Mọi nhu cầu mua giao diện web, thắc mắc, tư vấn,... xin vui lòng liên hệ theo thông tin dưới đây:</p>
-                        <p style="color: #ffffff;">- Phone: 0986.989.626<br />
-                            - Email: topweb.com.vn@gmail.com<br />
-                            - Website: <a href="http://topweb.com.vn/">topweb.com.vn</a>
+                        <p style="color: #ffffff;">Đây là giao diện bán hàng được thiết kế và duy trì bởi Ommanisort. Mọi nhu cầu mua giao diện web, thắc mắc, tư vấn,... xin vui lòng liên hệ theo thông tin dưới đây:</p>
+                        <p style="color: #ffffff;">- Phone: {{$config->hotline}}<br />
+                            - Email: {{$config->email}}<br />
+                            - Website: <a href="http://Ommanisoft.com/">Ommanisoft.com</a>
                         </p>
                         <p style="color: #ffffff;">
-                            <fb:like-box href="http://www.facebook.com/topweb.com.vn" width="340" height="375" show_faces="true" stream="false" header="false"></fb:like-box>
+                            <iframe name="f82e7974776d4" 
+                                width="340px" height="375px" 
+                                src="{{$config->video}}" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen
+                                allow="autoplay; encrypted-media"
+                                style="border: none; visibility: visible; width: 340px; height: 130px;" class="">
+                            </iframe>
                         </p>
                     </div>
                 </div>
@@ -75,7 +84,7 @@
                     <div class="col-inner"  >
                         <h3><span style="color: #ffffff;">BẢN ĐỒ</span></h3>
                         <p>
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5265.788320050789!2d105.88625320580789!3d21.0536973642171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135a912bcbebd6b%3A0xd34f9eff83be1e39!2zOSBOZ3V54buFbiBWxINuIExpbmgsIFBow7pjIMSQ4buTbmcsIExvbmcgQmnDqm4sIEjDoCBO4buZaSwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1511773884443" width="250" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
+                            <iframe src="{{$config->google_map}}" width="250" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
                         </p>
                     </div>
                 </div>
@@ -85,9 +94,9 @@
                     <div class="col-inner"  >
                         <h3><span style="color: #ffffff;">Về chúng tôi</span></h3>
                         <p style="color: #ffffff;">Đây là giao diện bán hàng được thiết kế và duy trì bởi Ommanisort. Mọi nhu cầu mua giao diện web, thắc mắc, tư vấn,... xin vui lòng liên hệ theo thông tin dưới đây:</p>
-                        <p style="color: #ffffff;">- Phone: 0986.989.626<br />
-                            - Email: topweb.com.vn@gmail.com<br />
-                            - Website: <a href="http://topweb.com.vn/">topweb.com.vn</a>
+                        <p style="color: #ffffff;">- Phone: 0{{$config->hotline}}<br />
+                            - Email: {{$config->email}}<br />
+                            - Website: <a href="http://Ommanisoft.com">"http://Ommanisoft.com</a>
                         </p>
                     </div>
                 </div>
@@ -106,10 +115,10 @@
     </div><!-- .absolute-footer -->
     <a href="#top" class="back-to-top button invert plain is-outline hide-for-medium icon circle fixed bottom z-1" id="top-link"><i class="icon-angle-up" ></i></a>
 </footer><!-- .footer-wrapper -->
-<a href="tel:+0986.989.626">
+<a href="tel:+84{{$config->hotline}}">
 	<div class="hotline">
 		<span class="before-hotline">Hotline:</span>
-		<span class="hotline-number">0986.989.626</span>
+		<span class="hotline-number">{{$config->hotline}}</span>
 	</div>
 </a>
 <style scope="scope">

@@ -33,15 +33,35 @@
           <div class="container">
             <nav class="woocommerce-pagination">
               <ul class="page-numbers nav-pagination links text-center">
-                <li><span class="page-number current">1</span></li>
+                @if ( $product->onFirstPage())
+                  <li>
+                    <span class="page-number current">
+                      <a class="page-link" href="{{ $product->previousPageUrl() }}">1</a>
+                    </span>
+                  </li>
+                @else
+                    <li>
+                    <span class="page-number current">
+                      <a class="page-link" href="#">1</a>
+                    </span>
+                  </li>
+                @endif
                 <li>
-                  <a class="page-number" href="page/2/index.html">2</a>
+                  <a class="page-number" href="{{ $product->nextPageUrl() }}">2</a>
                 </li>
+                @if ($product->hasMorePages())
                 <li>
-                  <a class="next page-number" href="page/2/index.html"
-                    ><i class="icon-angle-right"></i
-                  ></a>
+                  <a class="next page-number" href="{{ $product->nextPageUrl() }}">
+                    <i class="icon-angle-right"></i>
+                  </a>
                 </li>
+                @else
+                <li>
+                  <a class="next page-number" href="#">
+                    <i class="icon-angle-right"></i>
+                  </a>
+                </li>
+                @endif
               </ul>
             </nav>
           </div>

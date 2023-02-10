@@ -6,11 +6,9 @@
             <div id="content" class="large-9 right col" role="main">
                 <div class="page-inner">
                     <div class="woocommerce">
-                        <div class="woocommerce row row-large row-divided">
-                             <div class="col large-7 pb-0 ">
-                                Giới thiệu về chúng tôi
-                             </div>
-                        </div>
+                                <h2>{{$introduce->name}}</h2>
+                                <p>{{$introduce->title}}</p>
+                                {!! $introduce->description !!}
                         <div class="cart-footer-content after-cart-content relative"></div>
                     </div>
                 </div><!-- .page-inner -->

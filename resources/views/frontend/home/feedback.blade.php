@@ -22,7 +22,8 @@
                                          </div>
                                          <div class="icon-box-text last-reset">
                                              <p>
-                                                 <span style="font-size: 85%;">{{ $item->comment }}</span>
+                                                 <span>Anh/Chị {{$item->name}}:</span>
+                                                 <span  style="font-size: 85%;">{{ $item->comment }}</span>
                                              </p>
                                          </div>
                                      </div><!-- .icon-box -->

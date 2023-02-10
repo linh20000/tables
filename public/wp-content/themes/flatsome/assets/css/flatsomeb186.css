@@ -2410,15 +2410,11 @@ input[type="submit"].button,
 input[type="reset"].button,
 input[type="button"].button {
     color: #fff;
-    background-color: #446084;
-    background-color: var(--primary-color);
-    border-color: rgba(0, 0, 0, 0.05);
 }
 .button.is-outline,
 input[type="submit"].is-outline,
 input[type="reset"].is-outline,
 input[type="button"].is-outline {
-    border: 2px solid currentColor;
     background-color: transparent;
 }
 .dark .button.is-form:hover,
@@ -2429,7 +2425,6 @@ input[type="button"]:hover {
     outline: none;
     opacity: 1;
     color: #fff;
-    box-shadow: inset 0 0 0 100px rgba(0, 0, 0, 0.2);
 }
 .button.is-underline,
 .button.is-link {

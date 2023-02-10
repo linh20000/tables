@@ -8,9 +8,10 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Form_comment;
 use App\Models\Order;
+use App\Models\Introduce;
 use App\Models\Blog;
 use App\Models\Config;
-
+use Illuminate\Support\Facades\DB;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\TwitterCard;
@@ -33,7 +34,11 @@ class HomeInterfaceController extends Controller
         SEOTools::setTitle($config->seo_title);
         SEOTools::setDescription($config->seo_description);
         SEOTools::opengraph()->addProperty('type', 'articles');
-        SEOTools::twitter()->setSite($config->seo_title);
+        SEOTools::twitter()->setSite($config->seo_keyword); 
+        SEOTools::opengraph()->setUrl('http://127.0.0.1:8000/');
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::twitter()->setSite('@LuizVinicius73');
+        SEOTools::jsonLd()->addImage($config->logo);
         // end seo search
 
         // demo product
@@ -46,39 +51,87 @@ class HomeInterfaceController extends Controller
     //  end funtion show home
    
     // start function show product
-    public function ProductList($id, $slug)
+    public function ProductList($id, $slug, Request $request)
     {
         $cate = Category::where('id', $id)->first();
         // dd($cate);
-        $product = Product::where('category_id',$cate->id)->get();
-
+        $product = Product::where('category_id',$cate->id);
+        if($request->price == 'desc'){
+            $product = $product->orderBy('current_price','DESC');
+            
+        }
+        if($request->price == 'asc'){
+            $product = $product->orderBy('current_price','ASC');
+            
+        }
+        if($request->created_at == 'desc'){
+            $product = $product->orderBy('created_at','DESC');
+            
+        }
+        if($request->created_at == 'asc'){
+            $product = $product->orderBy('created_at','ASC');
+        }
+        if($request->created_at == 'desc' && $request->price == 'desc'){
+            $product = $product->orderBy('current_price','DESC')->orderBy('created_at','DESC');
+            
+        }
+        if($request->price == 'desc' && $request->created_at == 'asc'){
+            $product = $product->orderBy('current_price','DESC')->orderBy('created_at','ASC');
+            
+        }
+        if($request->price == 'asc' && $request->created_at == 'desc'){
+            $product = $product->orderBy('current_price','DESC')->orderBy('created_at','DESC');
+            
+        }
+        if($request->price == 'asc' && $request->created_at == 'asc'){
+            $product = $product->orderBy('current_price','DESC')->orderBy('created_at','ASC');
+            
+        }
+        $product = $product->paginate(12);
         // SEO PRODUCT
         SEOTools::setTitle($cate->seo_title);
         SEOTools::setDescription($cate->seo_description);
         SEOTools::opengraph()->addProperty('type', 'articles');
-        SEOTools::twitter()->setSite($cate->seo_title); 
-        // dd($product);
+        SEOTools::twitter()->setSite($cate->seo_title);
+        SEOTools::twitter()->setSite($cate->seo_keyword); 
+        SEOTools::opengraph()->setUrl('http://127.0.0.1:8000/');
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::twitter()->setSite('@LuizVinicius73');
+        SEOTools::jsonLd()->addImage($cate->thumbnail);
         return view('frontend.product.index', compact('product'));
     } 
     // end function show product
     // start function show introduce
     public function introduce()
     {
-        SEOTools::setTitle('Giới thiệu về chúng tôi');
-        return view('frontend.introduce.index');
+
+        $introduce = Introduce::first();
+        SEOTools::setTitle($introduce->seo_title);
+        SEOTools::setDescription($introduce->seo_description);
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::twitter()->setSite($introduce->seo_keyword); 
+        SEOTools::opengraph()->setUrl('http://127.0.0.1:8000/');
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::twitter()->setSite('@LuizVinicius73');
+        SEOTools::jsonLd()->addImage($introduce->thumbnail);
+        return view('frontend.introduce.index',compact('introduce'));
     } 
     // end function show introduce
 
     // start function show details product
     public function showDetails($id, $slug) {
-        $product = Product::where('status','=', '1')->limit(10)->get();
+        $product = Product::where('status','=', '1')->take(10)->get();
         $details_product = Product::find($id);
 
         // SEO DETAIL PRODUCT
         SEOTools::setTitle($details_product->seo_title);
         SEOTools::setDescription($details_product->seo_description);
         SEOTools::opengraph()->addProperty('type', 'articles');
-        SEOTools::twitter()->setSite($details_product->seo_title); 
+        SEOTools::twitter()->setSite($details_product->seo_keyword); 
+        SEOTools::opengraph()->setUrl('http://127.0.0.1:8000/');
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::twitter()->setSite('@LuizVinicius73');
+        SEOTools::jsonLd()->addImage($details_product->thumbnail);
 
 
         return view('frontend.details.index', compact('product', 'details_product'));
@@ -127,18 +180,19 @@ class HomeInterfaceController extends Controller
         [
             'author'=>'required',
             'comment'=>'required',
-            'email'=>'required',
-            'url'=>'required',
+            'email'=>'required|email',
+            // 'url'=>'required',
         ],
         [
             'author.required'=>'Vui lòng nhập họ tên !',
             'comment.required'=>'Nhập bình luận !',
             'email.required'=>'Nhập email !',
-            'url.required'=>'Nhập url',
+            'email.email'=>'Nhập email hợp lệ! (***@***)',
+            // 'url.required'=>'Nhập url',
         ]);
         $comment = $request->all();
         Form_comment::create($comment);
-        return response()->json(['success'=>'Đã gửi comment']);
+        return response()->json(['success'=>'Cảm ơn bạn đã gửi phản hồi!']);
     }
      // start function show new title
     public function showNewTitle()
@@ -153,4 +207,61 @@ class HomeInterfaceController extends Controller
         return view('frontend.payment.index');
     } 
     // end function payment
+
+    // start function show detail blog
+    public function detailBlog($id, $slug) 
+    {
+        $details_blog = Blog::find($id);
+         // SEO DETAIL PRODUCT
+        SEOTools::setTitle($details_blog->seo_title);
+        SEOTools::setDescription($details_blog->seo_description);
+        SEOTools::opengraph()->addProperty('type', 'articles');
+       SEOTools::twitter()->setSite($details_blog->seo_keyword); 
+        SEOTools::opengraph()->setUrl('http://127.0.0.1:8000/');
+        SEOTools::opengraph()->addProperty('type', 'articles');
+        SEOTools::twitter()->setSite('@LuizVinicius73');
+        SEOTools::jsonLd()->addImage($details_blog->thumbnail); 
+        return view('frontend.details_blog.index', compact('details_blog'));
+    }
+    // end function show detail blog
+
+    // start function show all product
+    public function showAllProduct(Request $request) {
+        
+        $product = DB::table('products')->take(12);
+        if($request->price == 'desc'){
+            $product = $product->orderBy('current_price','DESC');
+            
+        }
+        if($request->price == 'asc'){
+            $product = $product->orderBy('current_price','ASC');
+            
+        }
+        if($request->created_at == 'desc'){
+            $product = $product->orderBy('created_at','DESC');
+            
+        }
+        if($request->created_at == 'asc'){
+            $product = $product->orderBy('created_at','ASC');
+        }
+        if($request->created_at == 'desc' && $request->price == 'desc'){
+            $product = $product->orderBy('current_price','DESC')->orderBy('created_at','DESC');
+            
+        }
+        if($request->price == 'desc' && $request->created_at == 'asc'){
+            $product = $product->orderBy('current_price','DESC')->orderBy('created_at','ASC');
+            
+        }
+        if($request->price == 'asc' && $request->created_at == 'desc'){
+            $product = $product->orderBy('current_price','DESC')->orderBy('created_at','DESC');
+            
+        }
+        if($request->price == 'asc' && $request->created_at == 'asc'){
+            $product = $product->orderBy('current_price','DESC')->orderBy('created_at','ASC');
+            
+        }
+        $product= $product->paginate(12);
+        return view('frontend.product.index',compact('product'));
+    }
+    // end function show all product
 }

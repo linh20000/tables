@@ -10,7 +10,7 @@
                          @foreach ($blog as $item)
                             <div class="col post-item">
                                 <div class="col-inner">
-                                    <a href="" class="plain">
+                                    <a href="{{route('detailBlog', [$item->id, Str::slug($item->name)])}}" class="plain">
                                         <div class="box box-normal box-text-bottom box-blog-post has-hover">
                                             <div class="box-image">
                                                 <div class="image-zoom image-cover" style="padding-top:56.25%;">

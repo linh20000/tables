@@ -25,10 +25,9 @@
                     </div>
                     <!-- .flex-col -->
                     <div class="flex-col flex-grow">
-                        <a href="../cac-benh-hoc-duong-thuong-gap-cha-me-da-biet-chua/index.html"
-                            title="CÁC BỆNH HỌC ĐƯỜNG THƯỜNG GẶP – CHA MẸ ĐÃ BIẾT CHƯA?">{{$item->name}}</a>
-                        <span class="post_comments oppercase op-7 block is-xsmall"><a
-                                href=""></a></span>
+                        <a href="{{route('detailBlog',[$item->id, Str::slug($item->name)])}}" title="{{$item->name}}">{{$item->name}}</a>
+                        <span class="post_comments oppercase op-7 block is-xsmall">
+                        </span>
                     </div>
                 </div>
                 <!-- .flex-row -->

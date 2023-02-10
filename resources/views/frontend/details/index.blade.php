@@ -96,9 +96,9 @@
                             <div class="row row-small chat-facebook"  id="row-1171224134">
                                 <div class="col medium-6 small-12 large-6"  >
                                     <div class="col-inner"  >
-                                        <a rel="noopener noreferrer" href="tel:+84987654321" target="_blank" class="button primary expand"  style="border-radius:4px;">
+                                        <a rel="noopener noreferrer" href="tel:+84{{$config->hotline}}" target="_blank" class="button primary expand"  style="border-radius:4px;">
                                             <i class="icon-phone" ></i>  
-                                            <span>HOTLINE: 0987654321</span>
+                                            <span>HOTLINE: {{$config->hotline}}</span>
                                         </a>
                                     </div>
                                 </div>
@@ -199,10 +199,10 @@
                 <div class="is-divider small"></div>
                 <div class="textwidget custom-html-widget">
                     <div class="dia-diem-mua-hang">
-                        <p class="address">Công ty TNHH Bigsan</p>
+                        <p class="address">Công ty TNHH OMmanisoft</p>
                         <p class="info">+
-                        Địa chỉ: Tầng 1 TTTM Savico Megamall, 07 – 09 đường Nguyễn Văn Linh, Hà Nội.<br>
-                        + Điện thoại : 0986.989.626 - 1900.2066
+                        Địa chỉ: {{$config->address}}<br>
+                        + Điện thoại :{{$config->hotline}}
                         </p>
                     </div>
                 </div>

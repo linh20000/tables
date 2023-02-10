@@ -14,6 +14,9 @@ class Introduce extends Model
         'name',
         'thumbnail',
         'description',
+        'title',
         'seo_title',
+        'seo_description',
+        'seo_keyword',
     ];
 }

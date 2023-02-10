@@ -111,11 +111,18 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     //blog
     Route::prefix('blog')->group(function() {
+        // hiển thị blog
         Route::get('list',[BlogController::class,'BlogList'])->name('blog.list');
+
+        // thêm blog
         Route::get('create',[BlogController::class,'createBlog'])->name('blog.create');
         Route::post('create',[BlogController::class,'storeBlog']);
+
+        // chỉnh sửa blog
         Route::get('update/{id}',[BlogController::class,'getUpdateBlog'])->name('blog.getUpdate');
         Route::post('update/{id}',[BlogController::class,'updateBlog'])->name('blog.update');
+
+        // xóa blog
         Route::get('deleteblog/{id}', [BlogController::class, 'deleteBlog'])->name('blog.delete');
     });
 
@@ -169,17 +176,19 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::post('update', [App\Http\Controllers\Admin\EditProfileController::class, 'updateProfile'])->name('admin.getEditProfile');
     });
 
+    //form_comment
+    Route::prefix('comment')->group(function(){
+        Route::get('list',[BlogController::class,'viewComment'])->name('comment.list');
+        Route::get('deleteComment/{id}', [BlogController::class, 'deleteComment'])->name('comment.delete');
+        Route::get('search', [BlogController::class,'search'])->name('admin.comment.search');
+    });
+
 
 });
 
 
 // Giao diện người dùng
 
-// 
-
-Route::get('/', function () {
-    return view('frontend.home.index');
-});
 
 // trang chủ 
 Route::get('/', [App\Http\Controllers\frontend\HomeInterfaceController::class, 'showHome'])->name('showHome');
@@ -187,8 +196,15 @@ Route::get('/', [App\Http\Controllers\frontend\HomeInterfaceController::class, '
 // Danh sách sản phẩm
 Route::get('/danh-sach-san-pham/{id}-{slug}', [App\Http\Controllers\frontend\HomeInterfaceController::class, 'ProductList'])->name('ProductList');
 
+// Tìm kiếm sản phẩm
+Route::get('/tim-kiem', [App\Http\Controllers\frontend\SearchController::class, 'search'])->name('search');
+
 // Tin tức
 Route::get('/tin-tuc', [App\Http\Controllers\frontend\HomeInterfaceController::class, 'showNewTitle'])->name('showNewTitle');
+
+// chi tiết tin tức
+Route::get('/chi-tiet-tin-tuc/{id}-{slug}', [App\Http\Controllers\frontend\HomeInterfaceController::class, 'detailBlog'])->name('detailBlog');
+
 
 // Giới thiệu
 Route::get('/gioi-thieu', [App\Http\Controllers\frontend\HomeInterfaceController::class, 'introduce'])->name('introduce');
@@ -201,6 +217,10 @@ Route::post('/thanh-toan',[App\Http\Controllers\Frontend\HomeInterfaceController
 
 // danh mục sản phẩm
 Route::get('/danh-muc-{id}-{slug}',[App\Http\Controllers\frontend\HomeInterfaceController::class, 'showProduct'])->name('showProduct');
+
+// tất cả sanr phaamr
+Route::get('/san-pham',[App\Http\Controllers\frontend\HomeInterfaceController::class, 'showAllProduct'])->name('showAllProduct');
+
 
 // chi tiết sản phẩm
 Route::get('/san-pham/{id}-{slug}', [App\Http\Controllers\frontend\HomeInterfaceController::class, 'showDetails'])->name('showDetails');

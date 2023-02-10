@@ -3,7 +3,6 @@
 @section('content')
 <section class=" app-content content">
     <!-- Default box -->
-    
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
@@ -56,38 +55,41 @@
                             </select>
                             <button type="submit" class="btn btn-sm btn-secondary">Update lịch khám</button>
                         </form>
-                       <div class="action">
-                        <a href="{{route('get.orderAppointment')}}" class="btn btn-secondary waves-effect waves-float waves-light">Quay lại</a>
-                       <a href="" class="btn btn-sm btn-icon delete-record btn btn-secondary waves-effect waves-float waves-light"  data-bs-toggle="modal" data-bs-target="#deleteProductModal">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash font-medium-2 text-body">
-                                <polyline points="3 6 5 6 21 6"></polyline>
-                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                            </svg>
-                        </a>
-                        <div class="modal fade" id="deleteProductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header flex-column">
-                                        <div class="icon-box">
-                                        </div>						
-                                        <h4 class="modal-title w-100">Bạn có chắc không?</h4>	
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Bạn có thực sự muốn xóa? Quá trình này không thể được hoàn tác.</p>
-                                    </div>
-                                    <div class="modal-footer justify-content-center">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Quay lại</button>
-                                        <a href="{{route('deleteAppointment',[$book->id])}}"  type="button" class="btn btn-danger">Xóa</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                       </div>
                    </div>
                 </div>
-                
+             </div>
             <div>
         </div>
+        <div class="col-4">
+            <div class="action">
+                <a href="{{route('get.orderAppointment')}}" class="btn btn-secondary waves-effect waves-float waves-light">Quay lại</a>
+                <a href="" class="btn btn-sm btn-icon delete-record btn btn-secondary waves-effect waves-float waves-light"  data-bs-toggle="modal" data-bs-target="#deleteProductModal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash font-medium-2 text-body">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                </a>
+                <div class="modal fade" id="deleteProductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header flex-column">
+                                <div class="icon-box">
+                                </div>						
+                                <h4 class="modal-title w-100">Bạn có chắc không?</h4>	
+                            </div>
+                            <div class="modal-body">
+                                <p>Bạn có thực sự muốn xóa? Quá trình này không thể được hoàn tác.</p>
+                            </div>
+                            <div class="modal-footer justify-content-center">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Quay lại</button>
+                                <a href="{{route('deleteAppointment',[$book->id])}}"  type="button" class="btn btn-danger">Xóa</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 </div>
 <!-- /.card -->
