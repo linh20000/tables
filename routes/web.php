@@ -161,6 +161,13 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::post('update', [App\Http\Controllers\Admin\EditProfileController::class, 'updateProfile'])->name('admin.getEditProfile');
     });
 
+    //form_comment
+    Route::prefix('comment')->group(function(){
+        Route::get('list',[BlogController::class,'viewComment'])->name('comment.list');
+        Route::get('deleteComment/{id}', [BlogController::class, 'deleteComment'])->name('comment.delete');
+        Route::get('search', [BlogController::class,'search'])->name('admin.comment.search');
+    });
+
 
 });
 

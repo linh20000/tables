@@ -78,9 +78,9 @@
               </li>
             </ul>
           </li>
-          <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Slogan</span></a>
+          <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Bình luận - Phản hồi</span></a>
             <ul class="menu-content">
-              <li><a class="d-flex align-items-center" href="{{route('get.intro')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List slogan</span></a>
+              <li><a class="d-flex align-items-center" href="{{route('comment.list')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Danh sách phản hồi</span></a>
               </li>
             </ul>
           </li>

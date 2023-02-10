@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Blog;
+use App\Models\Form_comment;
 
+use function JmesPath\search;
 
 class BlogController extends Controller
 {
@@ -63,5 +65,26 @@ class BlogController extends Controller
         $blog = Blog::findOrFail($id);
         $blog->delete();
         return redirect(route('blog.list'))->with('success', 'Đã xóa.');
+    }
+
+
+    //comment
+    public function viewComment(){
+        $comment = Form_comment::all();
+        return view('backend.comment.list',
+        ['title'=>'Danh sách phản hồi']
+        , compact('comment'));
+    }
+    public function deleteComment($id){
+        $comment = Form_comment::findOrFail($id);
+        $comment->delete();
+        return redirect(route('comment.list'))->with('success', 'Đã xóa...');
+    }
+    public function search(Request $request){
+        // dd($request->all());
+        $comment = Form_comment::where('author', 'LIKE', '%'. $request->search .'%')->orWhere('email', 'LIKE', '%'. $request->search .'%')
+        ->orWhere('comment', 'LIKE', '%'. $request->search .'%')->get();
+        // dd($request);
+        return view('backend.comment.list',['title'=>'Danh sách'],compact('comment'));
     }
 }
