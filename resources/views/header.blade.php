@@ -7,9 +7,9 @@
 							<li class="header-contact-wrapper">
 								<ul id="header-contact" class="nav nav-divided nav-uppercase header-contact">
 									<li class="">
-										<a href="mailto:topweb.com.vn@gmail.com" class="tooltip" title="topweb.com.vn@gmail.com">
+										<a href="{{$config->email}}" class="tooltip" title="{{$config->email}}">
 											<i class="icon-envelop" style="font-size:15px;"></i>			       
-											<span>Ommanisoft@gmail.com</span>
+											<span>{{$config->email}}</span>
 										</a>
 									</li>
 									<li class="">
@@ -43,8 +43,8 @@
 			<div class="header-inner flex-row container logo-left medium-logo-center" role="navigation">
 				<div id="logo" class="flex-col logo">
 					<a href="{{route('showHome')}}" title="" >
-						<img width="283" height="70" src="wp-content/uploads/2017/12/chu-ky-so-logo.png" class="header_logo header-logo" alt=""/>
-						<img  width="283" height="70" src="wp-content/uploads/2017/12/chu-ky-so-logo.png" class="header-logo-dark" alt=""/>
+						<img width="283" height="70" src="{{$config->logo}}" class="header_logo header-logo" alt=""/>
+						<img  width="283" height="70" src="{{$config->logo}}" class="header-logo-dark" alt=""/>
 					</a>
 				</div>
 				<div class="flex-col show-for-medium flex-left">

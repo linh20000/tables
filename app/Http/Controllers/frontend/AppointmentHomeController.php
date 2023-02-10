@@ -18,7 +18,6 @@ class AppointmentHomeController extends Controller
                 'email'=>'required',
                 'address'=>'required',
                 'content'=>'required',
-
             ],
             [
                 'name.required'=>'Vui lòng nhập đầy đủ họ tên !',
@@ -29,9 +28,10 @@ class AppointmentHomeController extends Controller
             ]
         );
         $data = $request->all();
+        // dd($data);
         Appointment::create($data);
 
-        return response()->json(['success'=>'Đặt lịch tư vấn thành công']);
+        return response()->json(['text'=>'Đặt lịch tư vấn thành công' , 'class'=>'mfp-hide','icon'=>'fa-circle-check']);
 
     }
 }

@@ -1,5 +1,5 @@
 @include('frontend.component.toast.toast')
-<section class="section dang-ky-tu-van" id="section_37509939">
+<section class="section " id="section_37509939">
     <div class="bg section-bg fill bg-fill  bg-loaded"> </div><!-- .section-bg -->
     <div class="section-content relative">
         <div class="row row-small row" id="row-581847231">
@@ -17,8 +17,7 @@
                     <a href="#test" target="_self" class="button secondary" style="border-radius:4px;">
                         <span>Đăng ký ngay</span>
                     </a>
-                    <div id="test"
-                        class="lightbox-by-id lightbox-content mfp-hide lightbox-white "style="max-width:650px ;padding:20px">
+                    <div id="test" class="lightbox-by-id lightbox-content mfp-hide lightbox-white "style="max-width:650px ;padding:20px">
                         <div role="form" class="wpcf7" id="wpcf7-f417-p2-o1" lang="vi" dir="ltr">
                             <div class="screen-reader-response"></div>
                             <div class="wpcf7-form">
@@ -57,7 +56,8 @@
                                             <span class="error_content mt-1 d-block" style="color:red; margin-bottom:10px; display:block;"></span>
                                     </span>
                                     <br />
-                                    <button id="submit" type="submit" 
+                                    <input type="hidden" name="status" id="" value="1">
+                                        <button id="success" type="submit" 
                                         class="wpcf7-form-control wpcf7-submit btn" />Đăng ký ngay<button>
                                 </p>
                                 <div class="wpcf7-response-output wpcf7-display-none"></div>
@@ -82,11 +82,10 @@
                     <a href="#test" target="_self" class="button secondary" style="border-radius:4px;">
                         <span>Đăng ký ngay</span>
                     </a>
-                    <div
-                        id="test"class="lightbox-by-id lightbox-content mfp-hide lightbox-white "style="max-width:650px ;padding:20px">
+                    <div id="test"class="lightbox-by-id lightbox-content mfp-hide lightbox-white "style="max-width:650px ;padding:20px">
                         <div role="form" class="wpcf7" id="wpcf7-f417-p2-o2" lang="vi" dir="ltr">
                             <div class="screen-reader-response"></div>
-                            <div class="wpcf7-form">
+                            <form id="form_appointment" class="wpcf7-form">
                                 @csrf
                                 <h3>Đăng ký nhận tư vấn miễn phí</h3>
                                 <p>
@@ -123,12 +122,13 @@
                                             aria-invalid="false" placeholder="Câu hỏi của anh/ chị..."></textarea>
                                     </span>
                                     <span class="error_content text-danger mt-1 d-block"></span>
+                                    <input type="hidden" name="status" id="" value="1">
                                     <br />
-                                    <button id="submit" type="submit" 
+                                        <button id="success" type="submit" 
                                         class="wpcf7-form-control wpcf7-submit" />Đăng ký ngay<button>
                                 </p>
                                 <div class="wpcf7-response-output wpcf7-display-none"></div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -144,15 +144,17 @@
     </style>
 </section>
 <script type="text/javascript">
-    $('#submit').click(function(e) {
-        console.log(123);
+    $('#success').click(function(e) {
         e.preventDefault();
+        // console.log(e.target.attributes.id.textContent);
         let _token = $('meta[name="csrf-token"]').attr('content');
         let name = $('input[name=name]').val();
         let phoneNumber = $('input[name=phoneNumber]').val();
         let email = $('input[name=email]').val();
         let address = $('input[name=address]').val();
         let content = $('textarea[name=content]').val();
+        let status = $('input[name=status]').val();
+        
         $.ajax({
             type:"POST",
             url:`{{route('advisory.ajax')}}`,
@@ -162,21 +164,62 @@
                 phoneNumber: phoneNumber,
                 email: email,
                 address: address,
-                content: content
+                content: content,
+                status: status
             },
             success: function(success) {
+                $('.mfp-container').addClass(success.class)
+                $('.mfp-bg').addClass(success.class)
                 $('.error_name').text('');
                 $('.error_phone').text('');
                 $('.error_email').text('');
                 $('.error_address').text('');
                 $('.error_content').text('');
-                 let name = $('input[name=name]').val();
-                    phoneNumber.val('');
-                    emai.val('');
-                    address.val('');
-                    content.val('');
-                    $('#test').css('display', 'none')
+                $('input[name=name]').val('');
+                $('input[name=phoneNumber]').val('');
+                $('input[name=email]').val('');
+                $('input[name=address]').val('');
+                $('input[name=content]').val('');
+                 var notifications = document.querySelector(".notifications");
+                var buttons = document.querySelectorAll(".buttons .btn");
 
+                const toastDetails = {
+                    timer: 3000,
+                }
+
+                const removeToast = (toast) => {
+                    toast.classList.add(success.class)
+                    if (toast.timeoutId) clearTimeout(toast.timeoutId); // Clearing the timeout for the toast
+                    setTimeout(() => toast.remove(), 500) // Removing the toast after 500ms
+                }
+
+                const createToast = (id) => {
+                    // console.log(success.icon);
+                    // console.log(success.text);
+                    // console.log(id);
+
+                    // Getting the icon and text for the toast based on the id passed
+                    // const { icon, text } = toastDetails[id];
+                    
+                    const toast = document.createElement("li"); // Creating a new 'li' element for the toast
+                    toast.className = `toast ${id}` // Setting the classes for the toast
+                    // Setting the inner HTML for the toast
+                    toast.innerHTML = `<div class="column">
+                                            <i class="fa-solid ${success.icon}"></i>
+                                            <span>${success.text}</span>
+                                        </div>
+                                        `
+                    notifications.appendChild(toast); // Append the toast to the notification ul
+                    // Setting a timeout to remove the toast after the specified duration
+                    toast.timeoutId = setTimeout(() => removeToast(toast), toastDetails.timer)
+
+                    // const removeToast = (toast) => {
+                    //     toast.classList.add("mfp-hide")
+                    //     if (toast.timeoutId) clearTimeout(toast.timeoutId); // Clearing the timeout for the toast
+                    //     setTimeout(() => toast.remove(), 500) // Removing the toast after 500ms
+                    // }
+                }
+                createToast(e.target.attributes.id.textContent)
             },
             error: function(e) {
                 if (e.responseJSON.errors.name) {
@@ -207,4 +250,42 @@
             }
         })
     })
+
+    // buttons.forEach(btn => {
+	// 	btn.addEventListener("click", () => {
+    //     })
+	// });
+
+    // toast
+    // var notifications = document.querySelector(".notifications");
+    // var buttons = document.querySelectorAll(".buttons .btn");
+
+	// const toastDetails = {
+	// 	timer: 5000,
+	// }
+
+	// const removeToast = (toast) => {
+	// 	toast.classList.add("hide")
+	// 	if (toast.timeoutId) clearTimeout(toast.timeoutId); // Clearing the timeout for the toast
+	// 	setTimeout(() => toast.remove(), 500) // Removing the toast after 500ms
+	// }
+
+	// const createToast = (id) => {
+	// 	// Getting the icon and text for the toast based on the id passed
+	// 	const { icon, text } = toastDetails[id];
+	// 	const toast = document.createElement("li"); // Creating a new 'li' element for the toast
+	// 	toast.className = `toast ${id}` // Setting the classes for the toast
+	// 	// Setting the inner HTML for the toast
+	// 	toast.innerHTML = `<div class="column">
+    //                             <i class="fa-solid ${icon}"></i>
+    //                             <span>${text}</span>
+    //                         </div>
+    //                         <i class="fa-solid fa-xmark" onclick="removeToast(this.parentElement)"></i>`
+	// 	notifications.appendChild(toast); // Append the toast to the notification ul
+	// 	// Setting a timeout to remove the toast after the specified duration
+	// 	toast.timeoutId = setTimeout(() => removeToast(toast), toastDetails.timer)
+	// }
+
+	// Adding a click event listener to each button to create a toast when clicked
+	
 </script>

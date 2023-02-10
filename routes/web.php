@@ -153,6 +153,14 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('deletePolicy/{id}', [PolicyController::class, 'deletePolicy'])->name('policy.delete');
     });
 
+    Route::prefix('appointment')->group(function() {
+        // get update
+        Route::get('list',[App\Http\Controllers\Admin\OrderController::class,'orderAppointment'])->name('get.orderAppointment');
+        Route::get('update/{id}',[App\Http\Controllers\Admin\OrderController::class,'updateAppointment'])->name('updateAppointment');
+        Route::post('update/{id}',[App\Http\Controllers\Admin\OrderController::class,'updatement'])->name('updatement');
+        Route::get('delete-{id}', [App\Http\Controllers\Admin\OrderController::class, 'deleteAppointment'])->name('deleteAppointment');
+    });
+
     // editting
     Route::prefix('editing')->group(function () {
         // get

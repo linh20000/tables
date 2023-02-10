@@ -78,6 +78,12 @@
               </li>
             </ul>
           </li>
+          <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Tư vấn</span></a>
+            <ul class="menu-content">
+              <li><a class="d-flex align-items-center" href="{{route('get.orderAppointment')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Danh sách</span></a>
+              </li>
+            </ul>
+          </li>
           <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Invoice">Slogan</span></a>
             <ul class="menu-content">
               <li><a class="d-flex align-items-center" href="{{route('get.intro')}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List slogan</span></a>

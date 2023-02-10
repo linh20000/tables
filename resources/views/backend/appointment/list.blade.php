@@ -24,7 +24,7 @@
                     <div class="card-body d-flex align-items-center justify-content-between">
                         <div>
                             <h3 class="fw-bolder mb-75"></h3>
-                            <h3>Tổng số lịch hẹn : {{$orderAppointment}}</h3>
+                            <h3>Tổng : {{$orderAppointment}}</h3>
                         </div>
                         <div class="avatar bg-light-primary p-50">
                             <span class="avatar-content">
@@ -51,10 +51,7 @@
                                     số điện thoại
                                 </th>
                                 <th style="width: 10%">
-                                    Thời gian
-                                </th>
-                                <th style="width: 10%">
-                                    Triệu chứng
+                                    Thời gian tạo
                                 </th>
                                 <th style="width: 10%">
                                     Trạng thái
@@ -82,12 +79,7 @@
                                 </td>
                                 <td style="max-width:110px;"> 
                                     <a style="display:-webkit-box;word-wrap: break-word;white-space: normal;overflow: hidden;display: -webkit-box;text-overflow: ellipsis;-webkit-box-orient: vertical;-webkit-line-clamp: 2; ">
-                                        {{$appointment->time}}
-                                    </a>
-                                </td>
-                                <td class=""  style="max-width:150px;">
-                                    <a style="display:-webkit-box;word-wrap: break-word;white-space: normal;overflow: hidden;display: -webkit-box;text-overflow: ellipsis;-webkit-box-orient: vertical;-webkit-line-clamp: 2; ">
-                                        {{$appointment->symptom}}
+                                        {{$appointment->created_at->format('Y-m-d')}}
                                     </a>
                                 </td>
                                 <td class=""  style="max-width:150px;">

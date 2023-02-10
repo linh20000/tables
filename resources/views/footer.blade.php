@@ -6,7 +6,7 @@
                     <div class="col-inner"  >
                         <h3><span style="color: #ffffff; font-size: 95%;">GIỚI THIỆU</span></h3>
                         <ul>
-                            <li class="bullet-checkmark bullet-arrow"><span style="color: #d1d1d1;"><a href="#">Giới thiệu</a></span></li>
+                            <li class="bullet-checkmark bullet-arrow"><span style="color: #d1d1d1;"><a href="{{route('introduce')}}">Giới thiệu</a></span></li>
                             <li class="bullet-checkmark bullet-arrow"><a href="#"><span style="color: #d1d1d1;">Khách hàng</span></a></li>
                             <li class="bullet-checkmark bullet-arrow"><span style="color: #d1d1d1;"><a href="#">Đối tác</a></span></li>
                             <li class="bullet-checkmark bullet-arrow"><span style="color: #d1d1d1;"><a href="#">Hệ thống quản lý</a></span></li>

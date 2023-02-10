@@ -42,8 +42,9 @@
                     <ul>
                         <li class="pb-1">Tên khách hàng : {{$book->name}}</li>
                         <li class="pb-1">Số điện thoại : {{$book->phoneNumber}}</li>
-                        <li class="pb-1">Thời gian đặt lịch : {{$book->time}}</li>
-                        <li class="pb-1">Triệu chứng : {{$book->symtom}}</li>
+                        <li class="pb-1">Email : {{$book->email}}</li>
+                        <li class="pb-1">Địa chỉ : {{$book->address}}</li>
+                        <li class="pb-1">Nội dung : {{$book->content}}</li>
                     </ul>
                     <br>
                     <div class="wrap d-flex justify-content-between">

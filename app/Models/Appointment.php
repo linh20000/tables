@@ -14,6 +14,7 @@ class Appointment extends Model
         'email',
         'address',
         'content',
+        'status',
     ];
 
 }
