@@ -53,15 +53,15 @@
                 <tbody>
                 <tr>
                     <form action="{{route('admin.product.search')}}" method="GET">
-                    <td>
-                        <input class="form-control" name="search" placeholder="Nhập tên sản phẩm" value="">
+                        <td>
+                            <input class="form-control" name="search" placeholder="Nhập tên sản phẩm" value="">
 
-                    </td>
-                    <td>
-                        <button type="submit" class="btn btn-secondary">Tìm kiếm</button>
-                    </td>
-                    <td><a class="btn btn-secondary" href="{{route('admin.showProductList')}}">Xóa tìm kiếm</a></td>
-                </form>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-secondary">Tìm kiếm</button>
+                        </td>
+                        <td><a class="btn btn-secondary" href="{{route('admin.showProductList')}}">Xóa tìm kiếm</a></td>
+                    </form>
                 </tr>
             </tbody>
         </table>

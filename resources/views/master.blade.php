@@ -35,6 +35,7 @@
 	<link rel="canonical" href="index.html" />
 	<link rel='shortlink' href='index.html' />
 	<link rel="stylesheet" href="{{asset('asset/css.css')}}">
+	@stack('component-css')
 	</head>
 
 	{{-- start body --}}

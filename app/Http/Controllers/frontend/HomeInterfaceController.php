@@ -127,18 +127,19 @@ class HomeInterfaceController extends Controller
         [
             'author'=>'required',
             'comment'=>'required',
-            'email'=>'required',
-            'url'=>'required',
+            'email'=>'required|email',
+            // 'url'=>'required',
         ],
         [
             'author.required'=>'Vui lòng nhập họ tên !',
             'comment.required'=>'Nhập bình luận !',
             'email.required'=>'Nhập email !',
-            'url.required'=>'Nhập url',
+            'email.email'=>'Nhập email hợp lệ! (***@***)',
+            // 'url.required'=>'Nhập url',
         ]);
         $comment = $request->all();
         Form_comment::create($comment);
-        return response()->json(['success'=>'Đã gửi comment']);
+        return response()->json(['success'=>'Cảm ơn bạn đã gửi phản hồi!']);
     }
      // start function show new title
     public function showNewTitle()
