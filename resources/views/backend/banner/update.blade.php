@@ -108,7 +108,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12  ps-5 mb-2">
-                            <a href" class="btn btn-secondary">Quay lại</a>
+                            <a href="{{route('admin.banner')}}" class="btn btn-secondary">Quay lại</a>
                             <input type="submit" value="Chỉnh sửa" class="btn btn-success float-right ms-2">
                         </div>
                     </div>

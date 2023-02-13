@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\PolicyController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\frontend\HomeInterfaceController;
 use Illuminate\Support\Facades\Route;
 
@@ -183,6 +184,21 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('search', [BlogController::class,'search'])->name('admin.comment.search');
     });
 
+    Route::prefix('service')->group(function() {
+        // hiển thị service
+        Route::get('list',[ServiceController::class,'ServiceList'])->name('service.list');
+
+        // thêm service
+        Route::get('create',[ServiceController::class,'createService'])->name('service.create');
+        Route::post('create',[ServiceController::class,'storeService']);
+
+        // chỉnh sửa service
+        Route::get('update/{id}',[ServiceController::class,'getUpdateService'])->name('service.getUpdate');
+        Route::post('update/{id}',[ServiceController::class,'updateService'])->name('service.update');
+
+        // xóa service
+        Route::get('deleteservice/{id}', [ServiceController::class, 'deleteService'])->name('service.delete');
+    });
 
 });
 

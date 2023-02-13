@@ -65,7 +65,7 @@ class ProductController extends Controller
 
     public function deleteProduct($id) {
         $product_delete = Product::find($id) ;
-        $product_delete -> delete();
+        $product_delete->delete();
         return back()->with('mess', 'Xóa thành công sản phẩm');        
     }
 }

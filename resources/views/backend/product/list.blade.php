@@ -54,7 +54,7 @@
                 <tr>
                     <form action="{{route('admin.product.search')}}" method="GET">
                         <td>
-                            <input class="form-control" name="search" placeholder="Nhập tên sản phẩm" value="">
+                            <input class="form-control" name="search" placeholder="Nhập tên sản phẩm" value="{{app("request")->input("search")}}">
 
                         </td>
                         <td>
@@ -85,7 +85,7 @@
                         <th style=" font-size:10px;width: 1%">
                             Id
                         </th>
-                        <th style=" font-size:10px;width: 15%">
+                        <th style=" font-size:10px;width: 20%">
                             Ảnh
                         </th>
                         <th style=" font-size:10px;width: 15%">
@@ -97,13 +97,13 @@
                         <th style=" font-size:10px;width: 10%">
                             Giá gốc
                         </th>
-                        <th style=" font-size:10px;width: 10%">
+                        <th style=" font-size:10px;width: 11%">
                             Giá hiện tại
                         </th>
-                        <th style=" font-size:10px;width: 15%">
+                        <th style=" font-size:10px;width: 14%">
                             tình trạng
                         </th>
-                        <th style=" font-size:10px;" class="text-right">
+                        <th style=" font-size:10px; width: 11%" class="text-right">
                             Tác vụ
                         </th>
                     </tr>
@@ -117,26 +117,26 @@
                             </a>
                         </td>
                         <td >
-                            <div style="max-width:110px; min-width:80px; max-height:50px; overflow:hidden; display:flex;">
-                                <img style="width:100%;" src="{{$item->thumbnail ? $item->thumbnail : asset('upload_thumbnail/empty_img.png')}}" alt="">
+                            <div style="height:70px; overflow:hidden; display:flex; justify-content: center">
+                                <img style="width:85%; object-fit:cover;" src="{{$item->thumbnail ? $item->thumbnail : asset('upload_thumbnail/empty_img.png')}}" alt="">
                             </div>
                         </td>
-                        <td style="max-width:110px;"> 
+                        <td> 
                             <a style="word-wrap: break-word;white-space: normal;overflow: hidden;display: -webkit-box;text-overflow: ellipsis;-webkit-box-orient: vertical;-webkit-line-clamp: 2; ">
                                 {{$item->name}}
                             </a>
                         </td>
-                        <td style="max-width:110px;"> 
+                        <td> 
                             <a style="word-wrap: break-word;white-space: normal;overflow: hidden;display: -webkit-box;text-overflow: ellipsis;-webkit-box-orient: vertical;-webkit-line-clamp: 2; ">
                                 {{$item->product_code}}
                             </a>
                         </td>
-                        <td style="max-width:110px;"> 
+                        <td> 
                             <a style="word-wrap: break-word;white-space: normal;overflow: hidden;display: -webkit-box;text-overflow: ellipsis;-webkit-box-orient: vertical;-webkit-line-clamp: 2; ">
                                 {{$item->old_price}}
                             </a>
                         </td>
-                        <td style="max-width:110px;"> 
+                        <td> 
                             <a style="word-wrap: break-word;white-space: normal;overflow: hidden;display: -webkit-box;text-overflow: ellipsis;-webkit-box-orient: vertical;-webkit-line-clamp: 2; ">
                                 {{$item->current_price}}
                             </a>

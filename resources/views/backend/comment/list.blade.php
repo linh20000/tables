@@ -42,7 +42,7 @@
                 <tr>
                     <form action="{{route('admin.comment.search')}}" method="GET">
                         <td>
-                            <input class="form-control" name="search" placeholder="Nhập" value="">
+                            <input class="form-control" name="search" value="{{app("request")->input("search")}}" placeholder="Nhập" >
                         </td>
                         <td>
                             <button type="submit" class="btn btn-secondary">Tìm kiếm</button>

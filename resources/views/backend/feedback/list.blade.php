@@ -83,16 +83,16 @@
                         <th style="width: 1%">
                             Id
                         </th>
-                        <th style="width: 10%">
+                        <th style="width: 15%">
                             Ảnh
                         </th>
-                        <th style="width: 15%">
+                        <th style="width: 10%">
                             Tên
                         </th>
-                        <th style="width: 10%">
+                        <th style="width: 20%">
                             Bình luận
                         </th>
-                        <th style="width: 15%" class="text-right">
+                        <th style="width: 10%" class="text-right">
                             Tác vụ
                         </th>
                     </tr>
@@ -104,7 +104,7 @@
                             {{$item->id}}
                         </td>
                         <td >
-                            <div style="max-width:110px; min-width:150px; max-height:80px; overflow:hidden; display:flex;">
+                            <div style="max-width:110px; min-width:150px; max-height:80px; overflow:hidden; display:flex; margin: auto">
                                 <img style="width:100%;  object-fit:cover;"  src="{{$item->avatar ? $item->avatar : asset('upload_thumbnail/empty_img.png')}}" alt="">
                             </div>
                         </td>

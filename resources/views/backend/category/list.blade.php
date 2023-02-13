@@ -54,7 +54,7 @@
                 <tr>
                     <form method="get" action="{{route('admin.category.search')}}">
                         <td>
-                            <input class="form-control" name="name" placeholder="Nhập tên danh mục" value="">
+                            <input class="form-control" name="name" placeholder="Nhập tên danh mục" value="{{app("request")->input("name")}}">
                         </td>
                         <td>
                             <button type="submit" class="btn btn-secondary">Tìm kiếm</button>

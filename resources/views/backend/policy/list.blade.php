@@ -52,10 +52,10 @@
                         {{-- <th style="width: 10%">
                             Ảnh
                         </th> --}}
-                        <th style="width: 15%">
+                        <th style="width: 10%">
                             Tên
                         </th>
-                        <th style="width: 10%">
+                        <th style="width: 15%">
                             Mô tả
                         </th>
                         <th style="width: 10%">
@@ -64,7 +64,7 @@
                         <th style="width: 10%">
                             Ngày cập nhật
                         </th>
-                        <th style="width: 10%; text-align: right;" >
+                        <th style="width: 5%;" >
                             Tác vụ
                         </th>
                     </tr>
@@ -96,7 +96,7 @@
                         <th>
                             {{$item->updated_at}}
                         </th>
-                        <td class="project-actions" style="text-align: right;">
+                        <td class="project-actions" style="">
                             <a href="{{route('policy.getUpdate', [$item->id])}}" class="btn btn-sm btn-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit font-medium-2 text-body">
                                     <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>

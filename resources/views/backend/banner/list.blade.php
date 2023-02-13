@@ -8,7 +8,7 @@
         
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Quản lý danh mục</h1>
+                <h1>Quản lý banner</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right justify-content-end">
@@ -24,7 +24,7 @@
                     <div class="card-body d-flex align-items-center justify-content-between">
                         <div>
                             <h3 class="fw-bolder mb-75">{{$dataLenght}}</h3>
-                            <span>Tổng số danh mục</span>
+                            <span>Tổng số banner</span>
                         </div>
                         <div class="avatar bg-light-primary p-50">
                             <span class="avatar-content">
@@ -93,7 +93,7 @@
                             {{$item->id}}
                         </td>
                         <td >
-                            <div style="max-width:110px; min-width:150px; max-height:80px; overflow:hidden; display:flex;">
+                            <div style="max-width:110px; min-width:150px; max-height:80px; overflow:hidden; margin: auto">
                                 <img style="width:100%;" src="{{$item->thumbnail ? $item->thumbnail : asset('empty/empty_img.png')}}" alt="">
                             </div>
                         </td>
