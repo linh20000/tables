@@ -35,7 +35,7 @@ class HomeInterfaceController extends Controller
         SEOTools::setDescription($config->seo_description);
         SEOTools::opengraph()->addProperty('type', 'articles');
         SEOTools::twitter()->setSite($config->seo_keyword); 
-        SEOTools::opengraph()->setUrl('http://127.0.0.1:8000/');
+        SEOTools::opengraph()->setUrl(env('APP_URL'));
         SEOTools::opengraph()->addProperty('type', 'articles');
         SEOTools::twitter()->setSite('@LuizVinicius73');
         SEOTools::jsonLd()->addImage($config->logo);
@@ -94,7 +94,7 @@ class HomeInterfaceController extends Controller
         SEOTools::opengraph()->addProperty('type', 'articles');
         SEOTools::twitter()->setSite($cate->seo_title);
         SEOTools::twitter()->setSite($cate->seo_keyword); 
-        SEOTools::opengraph()->setUrl('http://127.0.0.1:8000/');
+        SEOTools::opengraph()->setUrl(env('APP_URL'));
         SEOTools::opengraph()->addProperty('type', 'articles');
         SEOTools::twitter()->setSite('@LuizVinicius73');
         SEOTools::jsonLd()->addImage($cate->thumbnail);
@@ -110,7 +110,7 @@ class HomeInterfaceController extends Controller
         SEOTools::setDescription($introduce->seo_description);
         SEOTools::opengraph()->addProperty('type', 'articles');
         SEOTools::twitter()->setSite($introduce->seo_keyword); 
-        SEOTools::opengraph()->setUrl('http://127.0.0.1:8000/');
+        SEOTools::opengraph()->setUrl(env('APP_URL'));
         SEOTools::opengraph()->addProperty('type', 'articles');
         SEOTools::twitter()->setSite('@LuizVinicius73');
         SEOTools::jsonLd()->addImage($introduce->thumbnail);
@@ -128,7 +128,7 @@ class HomeInterfaceController extends Controller
         SEOTools::setDescription($details_product->seo_description);
         SEOTools::opengraph()->addProperty('type', 'articles');
         SEOTools::twitter()->setSite($details_product->seo_keyword); 
-        SEOTools::opengraph()->setUrl('http://127.0.0.1:8000/');
+        SEOTools::opengraph()->setUrl(env('APP_URL'));
         SEOTools::opengraph()->addProperty('type', 'articles');
         SEOTools::twitter()->setSite('@LuizVinicius73');
         SEOTools::jsonLd()->addImage($details_product->thumbnail);
@@ -216,8 +216,8 @@ class HomeInterfaceController extends Controller
         SEOTools::setTitle($details_blog->seo_title);
         SEOTools::setDescription($details_blog->seo_description);
         SEOTools::opengraph()->addProperty('type', 'articles');
-       SEOTools::twitter()->setSite($details_blog->seo_keyword); 
-        SEOTools::opengraph()->setUrl('http://127.0.0.1:8000/');
+        SEOTools::twitter()->setSite($details_blog->seo_keyword); 
+        SEOTools::opengraph()->setUrl(env('APP_URL'));
         SEOTools::opengraph()->addProperty('type', 'articles');
         SEOTools::twitter()->setSite('@LuizVinicius73');
         SEOTools::jsonLd()->addImage($details_blog->thumbnail); 
