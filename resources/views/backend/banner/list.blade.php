@@ -51,7 +51,7 @@
         <div class="btn-group">
         </div>
         <div class="dt-buttons btn-group">
-            <a href="{{route('admin.createCategory')}}" class="btn btn-secondary action-item" tabindex="0" aria-controls="table-categories">
+            <a href="{{route('admin.createBanner')}}" class="btn btn-secondary action-item" tabindex="0" aria-controls="table-categories">
                 <span>
                     <span data-action="create">
                     <i class="fa fa-plus"></i>

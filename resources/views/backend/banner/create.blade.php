@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Thêm danh mục</h1>
+                <h1>Thêm banner</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right justify-content-end">
@@ -109,7 +109,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12  ps-5 mb-2">
-                            <a href" class="btn btn-secondary">Quay lại</a>
+                            <a href="{{route('admin.banner')}}" class="btn btn-secondary">Quay lại</a>
                             <input type="submit" value="Thêm" class="btn btn-success float-right ms-2">
                         </div>
                     </div>
