@@ -33,22 +33,27 @@
           <div class="container">
             <nav class="woocommerce-pagination">
               <ul class="page-numbers nav-pagination links text-center">
+                <li>
+                  <a class="prev page-number" href="{{ $product->previousPageUrl() }}">
+                    <i class="icon-angle-left"></i>
+                  </a>
+                </li>
                 @if ( $product->onFirstPage())
                   <li>
                     <span class="page-number current">
-                      <a class="page-link" href="{{ $product->previousPageUrl() }}">1</a>
+                      <a class="page-link page-link-current" href="{{ $product->previousPageUrl() }}">0</a>
                     </span>
                   </li>
                 @else
                     <li>
                     <span class="page-number current">
-                      <a class="page-link" href="#">1</a>
+                      <a class="page-link page-link-current" href="#">0</a>
                     </span>
                   </li>
                 @endif
-                <li>
+                {{-- <li>
                   <a class="page-number" href="{{ $product->nextPageUrl() }}">2</a>
-                </li>
+                </li> --}}
                 @if ($product->hasMorePages())
                 <li>
                   <a class="next page-number" href="{{ $product->nextPageUrl() }}">
@@ -80,4 +85,18 @@
     <!-- large-3 -->
   </div>
 </main>
+<script>
+  let page = 1;
+  $('.next').click((e)=> {
+    page += 1;
+    $('.page-link-current').text(page)
+  })
+  $('.prev').click((e)=> {
+    page -= 1;
+    if (page <=1) {
+      page = 1
+    }
+    $('.page-link-current').text(page)
+  })
+</script>
 @endsection

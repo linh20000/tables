@@ -32,8 +32,7 @@
             <div class="card-header">
             </div>
             <div class="card-body p-0">
-                
-                <form id="cerfitication" action="{{route('admin.updateBanner',[$banner->id])}}" method="POST" enctype="multipart/form-data">
+                <form id="cerfitication" action="{{route('admin.updateBanner',[$bannerr->id])}}" method="POST" >
                     @csrf
                     <div class="row">
                         <div class="col-md-12">
@@ -48,14 +47,14 @@
                                 <div class="card-body">
                                     <div class="form-group mt-1 mb-1">
                                         <label for="inputName" class="form-label mb-1">Tên</label>
-                                        <input type="text" id="name" name="name" value="{{$banner->name}}" class="form-control" placeholder="Nhập tên">
+                                        <input type="text" id="name" name="name" value="{{$bannerr->name}}" class="form-control" placeholder="Nhập tên">
                                         @error('name')
                                         <span class="text-danger mt-1 d-block">{{ $message }}</span>
                                         @enderror
                                     </div>
                                     <div class="form-group mt-1 mb-1">
                                         <label for="inputName" class="form-label mb-1">Tiêu đề</label>
-                                        <input type="text" id="title" name="title"  value="{{$banner->title}}" class="form-control" placeholder="Nhập tiêu đề">
+                                        <input type="text" id="title" name="title"  value="{{$bannerr->title}}" class="form-control" placeholder="Nhập tiêu đề">
                                         @error('title')
                                         <span class="text-danger mt-1 d-block">{{ $message }}</span>
                                         @enderror
@@ -75,7 +74,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group mt-1 mb-1">
                                                 <label for="seo_keyword" class="form-label mb-1">Seo keyword</label>
-                                                <input type="text" id="seo_keyword" name="seo_keyword" value="{{$banner->seo_keyword}}" class="form-control">
+                                                <input type="text" id="seo_keyword" name="seo_keyword" value="{{$bannerr->seo_keyword}}" class="form-control">
                                                 @if ($errors->has('seo_keyword'))
                                                     <span class="text-danger d-block mt-1">{{ $errors->first('seo_keyword') }}</span>
                                                 @endif
@@ -84,7 +83,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group mt-1 mb-1">
                                                 <label for="seo_description" class="form-label mb-1">Seo description</label>
-                                                <input type="text" id="seo_description" name="seo_description" value="{{$banner->seo_description}}" class="form-control">
+                                                <input type="text" id="seo_description" name="seo_description" value="{{$bannerr->seo_description}}" class="form-control">
                                                 @if ($errors->has('seo_description'))
                                                     <span class="text-danger d-block mt-1">{{ $errors->first('seo_description') }}</span>
                                                 @endif
@@ -93,14 +92,14 @@
                                         <div class="col-md-6">
                                             <div class="form-group mt-1 mb-1">
                                                 <label for="seo_title" class="form-label mb-1">Seo title</label>
-                                                <input type="text" id="seo_title" name="seo_title" value="{{$banner->seo_title}}" class="form-control">
+                                                <input type="text" id="seo_title" name="seo_title" value="{{$bannerr->seo_title}}" class="form-control">
                                                 @if ($errors->has('seo_title'))
                                                     <span class="text-danger d-block mt-1">{{ $errors->first('seo_title') }}</span>
                                                 @endif
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="hidden" name="thumbnail"  value="{{$banner->thumbnail}}">
+                                    <input type="hidden" name="thumbnail"  value="{{$bannerr->thumbnail}}">
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -132,7 +131,7 @@
                         margin: 0 auto;
                         margin-bottom: 20px;
                     ">
-                    <img style="width:100%; height:100%; border-radius:50%; object-fit:cover;" id="thumbnail_prev" src="{{$banner->thumbnail ? $banner->thumbnail : asset('empty/empty_img.png')}}"  alt="..">
+                    <img style="width:100%; height:100%; border-radius:50%; object-fit:cover;" id="thumbnail_prev" src="{{$bannerr->thumbnail ? $bannerr->thumbnail : asset('empty/empty_img.png')}}"  alt="..">
                 </div>
                 <button class="btn btn-primary btn-toggle-sidebar w-100 waves-effect waves-float waves-light" id="popup-1-button">
                     <span class="align-middle">Chọn ảnh</span>

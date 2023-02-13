@@ -47,8 +47,9 @@ class BannerController extends Controller
 
     // Chỉnh sửa danh mục
     public function getUpdateBanner($id) {
-        $banner = Banner::find($id);
-        return view('backend.banner.update',['breadcrumb'=>'Chỉnh sửa banner'], compact('banner'));
+        $bannerr = Banner::find($id);
+        // dd($banner);
+        return view('backend.banner.update',['breadcrumb'=>'Chỉnh sửa banner'], compact('bannerr'));
     } 
 
     public function updateBanner(Request $request, $id) {
